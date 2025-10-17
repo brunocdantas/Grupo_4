@@ -4,22 +4,45 @@
 }
 
 body {
-  background-color: #f9f9fb;
+  background: url("../IMG/fundo_roxo_deitado.png") no-repeat center center fixed;
+  background-size: cover;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  font-family: 'Inter', sans-serif;
 }
+
 
 .login-container {
   background: #fff;
-  width: 360px;
-  padding: 40px 32px;
-  border-radius: 12px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  width: 600px;
+  padding: 60px 48px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
+.header-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;            /* espaço entre logo e texto */
+  margin-bottom: 10px;  /* espaço abaixo do título */
+}
+
+.logo-inline {
+  width: 120px;          /* tamanho da logo */
+  height: auto;
+}
+
+.header-login h1 {
+  margin: 0;
+  font-size: 50px;
+  font-weight: 600;
+  color: #111;
+}
+
 
 h1 {
   font-size: 24px;
