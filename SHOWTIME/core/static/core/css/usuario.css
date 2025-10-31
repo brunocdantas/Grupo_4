@@ -4,35 +4,45 @@
 }
 
 body {
-  background: url("../IMG/fundo_roxo_deitado.png") no-repeat center center fixed;
-  background-size: cover;
   margin: 0;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+
+  /* fundo roxo */
+  background-image: url("/static/core/img/fundo_roxo_deitado.png");
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
   font-family: 'Inter', sans-serif;
 }
 
-
+/* container do login */
 .login-container {
-  background: #fff;
+  background: rgba(255, 255, 255, 0.05); /* leve transparência — não bloqueia o fundo */
+  backdrop-filter: blur(6px); /* cria aquele efeito de vidro fosco */
   width: 600px;
   padding: 60px 48px;
   border-radius: 16px;
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
   text-align: center;
+  color: #fff;
 }
+
 .header-login {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;            /* espaço entre logo e texto */
-  margin-bottom: 10px;  /* espaço abaixo do título */
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
 .logo-inline {
-  width: 120px;          /* tamanho da logo */
+  width: 120px;
   height: auto;
 }
 
@@ -40,19 +50,18 @@ body {
   margin: 0;
   font-size: 50px;
   font-weight: 600;
-  color: #111;
+  color: #fff;
 }
-
 
 h1 {
   font-size: 24px;
   margin-bottom: 8px;
   font-weight: 600;
-  color: #111;
+  color: #fff;
 }
 
 p {
-  color: #666;
+  color: #eee;
   font-size: 14px;
   margin-bottom: 32px;
 }
@@ -61,7 +70,7 @@ label {
   display: block;
   text-align: left;
   font-size: 14px;
-  color: #111;
+  color: #fff;
   font-weight: 500;
   margin-bottom: 6px;
 }
@@ -70,22 +79,26 @@ input {
   width: 100%;
   padding: 10px 12px;
   margin-bottom: 20px;
-  border: 1px solid #e6e6e9;
+  border: 1px solid rgba(255, 255, 255, 0.2);
   border-radius: 6px;
-  background-color: #f4f4f6;
+  background-color: rgba(255, 255, 255, 0.1);
   font-size: 14px;
-  color: #111;
+  color: #fff;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
 }
 
 input:focus {
   outline: none;
-  border-color: #000;
-  background-color: #fff;
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
 }
 
 .btn {
   width: 100%;
-  background-color: #060616;
+  background-color: #0f0f1d;
   color: #fff;
   padding: 12px;
   border: none;
@@ -102,7 +115,7 @@ input:focus {
 
 .divider {
   margin: 20px 0;
-  border-top: 1px solid #e6e6e9;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
   position: relative;
 }
 
@@ -112,17 +125,17 @@ input:focus {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: #fff;
+  background: rgba(0, 0, 0, 0.5);
   padding: 0 8px;
-  color: #666;
+  color: #fff;
   font-size: 13px;
 }
 
 .btn-outline {
   width: 100%;
   background-color: transparent;
-  color: #111;
-  border: 1px solid #ddd;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 12px;
   border-radius: 8px;
   font-weight: 500;
@@ -132,13 +145,13 @@ input:focus {
 }
 
 .btn-outline:hover {
-  background-color: #f4f4f6;
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 a {
   display: inline-block;
   margin-top: 16px;
-  color: #5a5a7a;
+  color: #ccc;
   font-size: 13px;
   text-decoration: none;
 }

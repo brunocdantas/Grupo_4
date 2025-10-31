@@ -1,18 +1,21 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Página de Login</title>
-  <link rel="stylesheet" href="../CSS/usuario.css">
+
+  <!-- CSS do Django -->
+  <link rel="stylesheet" href="{% static 'core/css/usuario.css' %}">
 </head>
 <body>
   <div class="login-container">
-<div class="header-login">
-  <img src="../IMG/Logo_nome_real.png" alt="Logo da empresa" class="logo-inline">
-  <h1>Bem-vindo</h1>
-</div>
-
+    <div class="header-login">
+      <!-- usa static pra imagem também -->
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo da empresa" class="logo-inline">
+      <h1>Bem-vindo</h1>
+    </div>
 
     <p>Entre com suas credenciais para acessar sua conta</p>
 
@@ -20,17 +23,17 @@
       <label for="email">Email</label>
       <input type="email" id="email" placeholder="seu@email.com" required>
 
-      <p><label for="senha">Senha</label>
+      <label for="senha">Senha</label>
       <input type="password" id="senha" placeholder="••••••••" required>
 
-      <button type="submit" class="btn">Entrar</button></p>
+      <button type="submit" class="btn">Entrar</button>
     </form>
 
     <div class="divider"></div>
 
-    <p><button class="btn-outline">Criar conta</button>
+    <button class="btn-outline">Criar conta</button>
 
-    <a href="#">Esqueceu sua senha?</a></p>
+    <p><a href="#">Esqueceu sua senha?</a></p>
   </div>
 </body>
 </html>

@@ -1,0 +1,213 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTime | Home</title>
+  <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+</head>
+<body>
+  <!-- Fundo roxo -->
+  <div class="page-bg"></div>
+
+  <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+      <span class="app-name">ShowTime</span>
+    </div>
+    <nav class="nav-actions">
+      <a href="#" class="link">Favoritos</a>
+      <a href="#" class="link">Artistas</a>
+      <a href="{% url 'usuario' %}" class="btn-primary">Entrar / Cadastre-se</a>
+
+
+      <!-- botão de login removido por enquanto -->
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <main class="hero">
+    <div class="hero-content">
+      <p class="tag">Nova plataforma</p>
+      <h1>Conecte artistas e fãs em um só lugar.</h1>
+      <p class="subtitle">
+        Veja próximos shows, receba notícias em tempo real e compre ingressos originais de forma segura.
+      </p>
+      <div class="hero-actions">
+        <a href="#" class="btn-primary big">Explorar agora</a>
+        <a href="#" class="ghost">Ver como funciona</a>
+      </div>
+      <p class="small-info">+120 artistas independentes já estão no ShowTime.</p>
+    </div>
+
+    <div class="hero-preview">
+      <h2>Atualizações recentes</h2>
+
+      <div class="card-mini">
+        <div>
+          <strong>Veigh</strong>
+          <p>Novo álbum “Eu Venci o Mundo” — 20h</p>
+        </div>
+        <span class="badge">hoje</span>
+      </div>
+
+      <div class="card-mini">
+        <div>
+          <strong>Emily Jones</strong>
+          <p>Pré-venda da turnê nacional liberada</p>
+        </div>
+        <span class="badge purple">novo</span>
+      </div>
+
+      <div class="card-mini">
+        <div>
+          <strong>The Rockers</strong>
+          <p>Show em SP — Allianz Parque</p>
+        </div>
+        <span class="badge gray">10 nov</span>
+      </div>
+    </div>
+  </main>
+
+  <!-- Destaques -->
+  <section class="section">
+    <div class="section-title">
+      <h2>Destaques de hoje</h2>
+    </div>
+
+    <div class="cards-grid">
+      <article class="card">
+        <img src="{% static 'core/img/veigh_album.jpg' %}" alt="Show" onerror="this.style.display='none'">
+        <h3>Veigh lança novo álbum</h3>
+        <p>Ouça primeiro e receba o aviso do show de divulgação.</p>
+        <a href="#" class="card-link">Ver detalhes →</a>
+      </article>
+
+      <article class="card">
+        <img src="{% static 'core/img/capa-album2.webp' %}" alt="Tour" onerror="this.style.display='none'">
+        <h3>Turnê internacional confirmada</h3>
+        <p>Artistas que você segue vão passar pelo Brasil.</p>
+        <a href="#" class="card-link">Ver agenda →</a>
+      </article>
+
+      <article class="card">
+        <img src="{% static 'core/img/fundo_roxo_deitado.png' %}" alt="Ingressos" onerror="this.style.display='none'">
+        <h3>Compre ingressos no app</h3>
+        <p>Sem filas, sem burocracia, direto com o artista.</p>
+        <a href="#" class="card-link">Como funciona →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- Shows sugeridos (carrossel) -->
+  <section class="section carousel-section">
+    <div class="section-title">
+      <h2>Sugeridos para você</h2>
+      
+    </div>
+
+    <div class="carousel">
+      <article class="show-card">
+        <div class="show-date">
+          <span class="day">10</span>
+          <span class="month">nov</span>
+        </div>
+        <div class="show-content">
+          <h3>The Rockers • São Paulo</h3>
+          <p>Allianz Parque • 20h</p>
+          <button class="show-btn">Comprar ingresso</button>
+        </div>
+      </article>
+
+      <article class="show-card">
+        <div class="show-date purple">
+          <span class="day">12</span>
+          <span class="month">nov</span>
+        </div>
+        <div class="show-content">
+          <h3>Emily Jones • Rio</h3>
+          <p>Jeunesse Arena • 21h</p>
+          <button class="show-btn">Ver detalhes</button>
+        </div>
+      </article>
+
+      <article class="show-card">
+        <div class="show-date green">
+          <span class="day">15</span>
+          <span class="month">nov</span>
+        </div>
+        <div class="show-content">
+          <h3>Blues Band • BH</h3>
+          <p>Arena MRV • 19h30</p>
+          <button class="show-btn">Comprar</button>
+        </div>
+      </article>
+
+      <article class="show-card">
+        <div class="show-date">
+          <span class="day">22</span>
+          <span class="month">nov</span>
+        </div>
+        <div class="show-content">
+          <h3>Festival Indie Sunset</h3>
+          <p>São Paulo • Memorial</p>
+          <button class="show-btn">Ver ingressos</button>
+        </div>
+      </article>
+
+      <article class="show-card">
+        <div class="show-date purple">
+          <span class="day">03</span>
+          <span class="month">dez</span>
+        </div>
+        <div class="show-content">
+          <h3>Show acústico • Rooftop</h3>
+          <p>Rio de Janeiro • 19h</p>
+          <button class="show-btn">Reservar</button>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Artistas em alta -->
+  <section class="section artists">
+    <div class="section-title">
+      <h2>Artistas em alta</h2>
+      
+    </div>
+
+    <div class="artists-list">
+      <div class="artist">
+        <img src="{% static 'core/img/artist_rock.png' %}" alt="The Rockers" onerror="this.style.display='none'">
+        <div>
+          <strong>The Rockers</strong>
+          <span>Rock alternativo</span>
+        </div>
+        <button class="follow">Seguir</button>
+      </div>
+      <div class="artist">
+        <img src="{% static 'core/img/artist_pop.png' %}" alt="Emily Jones" onerror="this.style.display='none'">
+        <div>
+          <strong>Emily Jones</strong>
+          <span>Pop</span>
+        </div>
+        <button class="follow">Seguir</button>
+      </div>
+      <div class="artist">
+        <img src="{% static 'core/img/artist_blues.png' %}" alt="Blues Band" onerror="this.style.display='none'">
+        <div>
+          <strong>Blues Band</strong>
+          <span>Blues</span>
+        </div>
+        <button class="follow">Seguir</button>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>© 2025 ShowTime — plataforma de conexão entre artistas e fãs.</p>
+  </footer>
+</body>
+</html>
