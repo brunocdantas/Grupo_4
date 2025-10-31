@@ -1,0 +1,185 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTime — Artistas</title>
+  <link rel="stylesheet" href="{% static 'core/css/artistas.css' %}">
+</head>
+<body>
+  <!-- fundo -->
+  <div class="page-bg"></div>
+
+  <!-- TOPBAR -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="ShowTime" class="logo">
+      <span class="app-name">ShowTime</span>
+    </div>
+
+    <nav class="nav-links">
+      <a href="{% url 'home' %}" class="link">Início</a>
+      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link active">Artistas</a>
+    </nav>
+
+    <a href="{% url 'usuario' %}" class="btn-top">Entrar / Cadastrar-se</a>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="page">
+    <!-- barra de busca -->
+    <section class="search-area">
+      <h1>Descubra Artistas</h1>
+      <p>Encontre seus artistas e bandas favoritos e siga para receber novidades. Ou descubra novos cantores que não irão sair da suas playlists</p>
+
+      <div class="search-box">
+        <input type="text" id="searchArtist" placeholder="Buscar artistas, bandas ou eventos...">
+        <span class="icon">🔍</span>
+        <!-- resultados -->
+        <ul id="searchResults" class="results-box"></ul>
+      </div>
+    </section>
+
+    <!-- grade de artistas -->
+    <section class="artists-grid" id="artistsGrid">
+      <!-- cada card -->
+      <article class="artist-card" data-nome="Veigh">
+        <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh">
+        <h3>Veigh</h3>
+        <p>Trap, hip hop</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Drake">
+        <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake">
+        <h3>Drake</h3>
+        <p>Hip hop, R&B</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="LUDMILLA">
+        <img src="{% static 'core/img/lud_capa.webp' %}" alt="LUDMILLA">
+        <h3>LUDMILLA</h3>
+        <p>Funk, pagode</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Anitta">
+        <img src="{% static 'core/img/anitta.webp' %}" alt="Anitta" onerror="this.style.display='none'">
+        <h3>Anitta</h3>
+        <p>Pop, funk</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Coldplay">
+        <img src="{% static 'core/img/coldplay.jpg' %}" alt="Coldplay" onerror="this.style.display='none'">
+        <h3>Coldplay</h3>
+        <p>Rock alternativo</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="The Weeknd">
+        <img src="{% static 'core/img/theweeknd.jpg' %}" alt="The Weeknd" onerror="this.style.display='none'">
+        <h3>The Weeknd</h3>
+        <p>R&B, pop</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Rihanna">
+        <img src="{% static 'core/img/rihanna.jpg' %}" alt="Rihanna" onerror="this.style.display='none'">
+        <h3>Rihanna</h3>
+        <p>Pop, R&B</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Lagum">
+        <img src="{% static 'core/img/lagum.png' %}" alt="Lagum" onerror="this.style.display='none'">
+        <h3>Lagum</h3>
+        <p>Pop rock brasileiro</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="NX Zero">
+        <img src="{% static 'core/img/nxzero.jpg' %}" alt="NX Zero" onerror="this.style.display='none'">
+        <h3>NX Zero</h3>
+        <p>Rock nacional</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+
+      <article class="artist-card" data-nome="Ivete Sangalo">
+        <img src="{% static 'core/img/ivete.jpg' %}" alt="Ivete Sangalo" onerror="this.style.display='none'">
+        <h3>Ivete Sangalo</h3>
+        <p>Axé, pop</p>
+        <button class="btn-follow">Seguir</button>
+      </article>
+    </section>
+  </main>
+
+  <!-- SCRIPT DE PESQUISA -->
+  <script>
+    // mesma lista da home + alguns a mais
+    const ARTISTAS = [
+      "Veigh","LUDMILLA","Anitta","Drake","Ferrugem","Gloria Groove","IZA","Lagum","NX Zero",
+      "Ivete Sangalo","Dua Lipa","Billie Eilish","The Weeknd","Rihanna","Beyoncé","Coldplay",
+      "Imagine Dragons","Arctic Monkeys","Foo Fighters","SZA","Kendrick Lamar","Travis Scott",
+      "Matuê","Teto","Wiu","Jão","Ana Castela","Marília Mendonça","Henrique & Juliano",
+      "Gusttavo Lima","Zé Neto & Cristiano","Projota","Emicida","Karol Conká","MC Cabelinho"
+    ];
+
+    const input = document.getElementById("searchArtist");
+    const resultsBox = document.getElementById("searchResults");
+    const cards = document.querySelectorAll(".artist-card");
+
+    // filtra cards na página conforme digita
+    input.addEventListener("input", function () {
+      const termo = this.value.toLowerCase().trim();
+
+      // mostra/esconde sugestões
+      if (!termo) {
+        resultsBox.style.display = "none";
+        // volta todos os cards
+        cards.forEach(c => c.style.display = "block");
+        return;
+      }
+
+      // sugestões (max 8)
+      const filtrados = ARTISTAS
+        .filter(nome => nome.toLowerCase().includes(termo))
+        .slice(0, 8);
+
+      resultsBox.innerHTML = filtrados.map(nome => `<li data-valor="${nome}">${nome}</li>`).join("");
+      resultsBox.style.display = "block";
+
+      // filtra cards visíveis
+      cards.forEach(card => {
+        const nomeCard = card.getAttribute("data-nome").toLowerCase();
+        card.style.display = nomeCard.includes(termo) ? "block" : "none";
+      });
+    });
+
+    // clique na sugestão
+    resultsBox.addEventListener("click", function (e) {
+      const li = e.target.closest("li");
+      if (!li) return;
+      const valor = li.getAttribute("data-valor");
+      input.value = valor;
+      resultsBox.style.display = "none";
+
+      // mostra só o card desse artista
+      cards.forEach(card => {
+        const nomeCard = card.getAttribute("data-nome");
+        card.style.display = (nomeCard.toLowerCase() === valor.toLowerCase()) ? "block" : "none";
+      });
+    });
+
+    // fecha a caixinha se clicar fora
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".search-box")) {
+        resultsBox.style.display = "none";
+      }
+    });
+  </script>
+</body>
+</html>

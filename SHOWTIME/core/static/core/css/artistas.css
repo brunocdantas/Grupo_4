@@ -1,0 +1,192 @@
+* {
+  box-sizing: border-box;
+  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+body {
+  margin: 0;
+  color: #0f1222;
+  min-height: 100vh;
+}
+
+/* fundo roxo */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  background: url("../img/fundo_roxo_deitado.png") center/cover no-repeat fixed;
+  z-index: -2;
+  filter: saturate(108%) contrast(105%);
+}
+
+/* topbar */
+.topbar {
+  background: #fff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.03);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo {
+  width: 30px;
+  height: auto;
+}
+.app-name {
+  font-weight: 700;
+  font-size: 19px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+.nav-links .link {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+.nav-links .link.active {
+  color: #5a32e2;
+}
+
+.btn-top {
+  background: #0f0f1d;
+  color: #fff;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* conteúdo principal */
+.page {
+  max-width: 1100px;
+  margin: 26px auto 50px auto;
+  padding: 0 16px;
+}
+
+/* busca */
+.search-area {
+  background: rgba(255,255,255,0.85);
+  border-radius: 18px;
+  padding: 20px 22px 26px;
+  backdrop-filter: blur(4px);
+  box-shadow: 0 16px 30px rgba(0,0,0,0.04);
+  margin-bottom: 22px;
+}
+
+.search-area h1 {
+  margin: 0 0 6px 0;
+  font-size: 1.8rem;
+}
+.search-area p {
+  margin: 0 0 16px 0;
+  color: #5e6270;
+}
+.search-box {
+  position: relative;
+}
+.search-box input {
+  width: 100%;
+  border: 1px solid rgba(0,0,0,0.05);
+  border-radius: 999px;
+  padding: 10px 38px 10px 16px;
+  font-size: 14px;
+  background: rgba(255,255,255,0.5);
+}
+.search-box .icon {
+  position: absolute;
+  right: 16px;
+  top: 9px;
+  font-size: 16px;
+  opacity: .6;
+}
+
+/* caixa de resultados */
+.results-box {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 20px 40px rgba(0,0,0,.09);
+  list-style: none;
+  margin: 6px 0 0 0;
+  padding: 6px 0;
+  display: none;
+  z-index: 20;
+}
+.results-box li {
+  padding: 8px 14px;
+  cursor: pointer;
+}
+.results-box li:hover {
+  background: rgba(90,50,226,0.08);
+}
+
+/* grid de artistas */
+.artists-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  gap: 18px;
+}
+
+.artist-card {
+  background: rgba(255,255,255,0.85);
+  border-radius: 16px;
+  padding: 14px 14px 16px;
+  text-align: center;
+  box-shadow: 0 14px 30px rgba(0,0,0,0.02);
+  backdrop-filter: blur(4px);
+}
+.artist-card img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 14px;
+  background: #eee;
+  margin-bottom: 10px;
+}
+.artist-card h3 {
+  margin: 0 0 4px 0;
+}
+.artist-card p {
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  color: #6a6f7a;
+}
+.btn-follow {
+  background: #0f0f1d;
+  color: #fff;
+  border: none;
+  padding: 7px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+/* responsivo */
+@media (max-width: 720px) {
+  .topbar {
+    gap: 12px;
+  }
+  .nav-links {
+    gap: 12px;
+  }
+  .search-area h1 {
+    font-size: 1.4rem;
+  }
+}

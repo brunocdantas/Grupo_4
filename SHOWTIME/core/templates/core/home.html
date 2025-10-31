@@ -7,7 +7,15 @@
   <title>ShowTime | Home</title>
   <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
 </head>
+
 <body>
+  {% if user_email %}
+  <p>Olá, {{ user_email }}!</p>
+  <a href="{% url 'usuario' %}">Sair</a>
+{% else %}
+  <a href="{% url 'usuario' %}">Entrar / Cadastre-se</a>
+{% endif %}
+
   <!-- Fundo roxo -->
   <div class="page-bg"></div>
 
@@ -18,8 +26,8 @@
       <span class="app-name">ShowTime</span>
     </div>
     <nav class="nav-actions">
-      <a href="#" class="link">Favoritos</a>
-      <a href="#" class="link">Artistas</a>
+      <a href="{% url 'favoritos' %}" class="btn-secondary">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link">Artistas</a>
       <a href="{% url 'usuario' %}" class="btn-primary">Entrar / Cadastre-se</a>
 
 
@@ -30,11 +38,25 @@
   <!-- Hero -->
   <main class="hero">
     <div class="hero-content">
+      <div class="search-box">
+  <input
+    type="text"
+    id="searchArtist"
+    placeholder="Buscar artistas, bandas ou eventos..."
+    autocomplete="off"
+  />
+  <span class="search-icon">🔍</span>
+
+  <!-- lista que aparece embaixo -->
+  <ul id="searchResults" class="search-results"></ul>
+</div>
+
       <p class="tag">Nova plataforma</p>
       <h1>Conecte artistas e fãs em um só lugar.</h1>
       <p class="subtitle">
         Veja próximos shows, receba notícias em tempo real e compre ingressos originais de forma segura.
       </p>
+      
       <div class="hero-actions">
         <a href="#" class="btn-primary big">Explorar agora</a>
         <a href="#" class="ghost">Ver como funciona</a>
@@ -86,14 +108,14 @@
       </article>
 
       <article class="card">
-        <img src="{% static 'core/img/capa-album2.webp' %}" alt="Tour" onerror="this.style.display='none'">
-        <h3>Turnê internacional confirmada</h3>
+        <img src="{% static 'core/img/iceman.webp'%}" alt="Tour" onerror="this.style.display='none'">
+        <h3>Drake irá lançar novo álbum entitulado "ICEMAN" em 2025, porém sem data prevista.</h3>
         <p>Artistas que você segue vão passar pelo Brasil.</p>
         <a href="#" class="card-link">Ver agenda →</a>
       </article>
 
       <article class="card">
-        <img src="{% static 'core/img/fundo_roxo_deitado.png' %}" alt="Ingressos" onerror="this.style.display='none'">
+        <img src="{% static 'core/img/ticket.jpg' %}" alt="Ingressos" onerror="this.style.display='none'">
         <h3>Compre ingressos no app</h3>
         <p>Sem filas, sem burocracia, direto com o artista.</p>
         <a href="#" class="card-link">Como funciona →</a>
@@ -209,5 +231,239 @@
   <footer class="footer">
     <p>© 2025 ShowTime — plataforma de conexão entre artistas e fãs.</p>
   </footer>
+  <script>
+  const ARTISTAS = [
+  // 🎤 Brasileiros
+  "Veigh",
+  "LUDMILLA",
+  "Anitta",
+  "Alcione",
+  "Djavan",
+  "Péricles",
+  "Ferrugem",
+  "Liniker",
+  "Gloria Groove",
+  "IZA",
+  "Léo Santana",
+  "Ivete Sangalo",
+  "Claudia Leitte",
+  "Zeca Pagodinho",
+  "Seu Jorge",
+  "Gilberto Gil",
+  "Caetano Veloso",
+  "Maria Bethânia",
+  "Marisa Monte",
+  "Chico Buarque",
+  "Gal Costa",
+  "Milton Nascimento",
+  "Elis Regina",
+  "Zezé Di Camargo & Luciano",
+  "Jorge & Mateus",
+  "Henrique & Juliano",
+  "Maiara & Maraisa",
+  "Zé Neto & Cristiano",
+  "Gusttavo Lima",
+  "Ana Castela",
+  "Luan Santana",
+  "Sandy & Junior",
+  "NX Zero",
+  "Fresno",
+  "Lagum",
+  "Natiruts",
+  "Melim",
+  "Skank",
+  "Jota Quest",
+  "Capital Inicial",
+  "Titãs",
+  "Os Paralamas do Sucesso",
+  "Detonautas",
+  "Mamonas Assassinas",
+  "Racionais MCs",
+  "Emicida",
+  "Projota",
+  "Mano Brown",
+  "Karol Conká",
+  "MC Cabelinho",
+  "MC Hariel",
+  "MC Ryan SP",
+  "MC Kevin o Chris",
+  "Kevin o Chris",
+  "POCAH",
+  "Tz da Coronel",
+  "Kayblack",
+  "Matue",
+  "Teto",
+  "Wiu",
+  "Orochi",
+  "Derek",
+  "Borges",
+  "Cabelinho",
+  "Veigh",
+  "Yunk Vino",
+  "Ryu The Runner",
+  "FBC",
+  "Djonga",
+  "BK’",
+  "Rashid",
+  "Criolo",
+  "Sabotage",
+
+  // 🌍 Internacionais
+  "Drake",
+  "Dua Lipa",
+  "The Weeknd",
+  "Rihanna",
+  "Beyoncé",
+  "Billie Eilish",
+  "Post Malone",
+  "Travis Scott",
+  "SZA",
+  "Kendrick Lamar",
+  "J. Cole",
+  "Nicki Minaj",
+  "Doja Cat",
+  "Ariana Grande",
+  "Bruno Mars",
+  "Ed Sheeran",
+  "Taylor Swift",
+  "Harry Styles",
+  "Olivia Rodrigo",
+  "Sam Smith",
+  "Lana Del Rey",
+  "Miley Cyrus",
+  "Justin Bieber",
+  "Shawn Mendes",
+  "Selena Gomez",
+  "Camila Cabello",
+  "Bad Bunny",
+  "Rosalía",
+  "Karol G",
+  "Maluma",
+  "J Balvin",
+  "Daddy Yankee",
+  "Ozuna",
+  "Peso Pluma",
+  "Coldplay",
+  "Imagine Dragons",
+  "OneRepublic",
+  "Maroon 5",
+  "Linkin Park",
+  "Arctic Monkeys",
+  "Foo Fighters",
+  "Green Day",
+  "Nirvana",
+  "The Killers",
+  "Paramore",
+  "Fall Out Boy",
+  "Panic! At The Disco",
+  "Muse",
+  "Red Hot Chili Peppers",
+  "Metallica",
+  "Guns N’ Roses",
+  "Queen",
+  "AC/DC",
+  "Pink Floyd",
+  "Led Zeppelin",
+  "U2",
+  "The Rolling Stones",
+  "The Beatles",
+  "ABBA",
+  "Elton John",
+  "Michael Jackson",
+  "Prince",
+  "Whitney Houston",
+  "Celine Dion",
+  "Adele",
+  "Lady Gaga",
+  "Shakira",
+  "Enrique Iglesias",
+  "Justin Timberlake",
+  "Eminem",
+  "50 Cent",
+  "Jay-Z",
+  "Kanye West",
+  "Lil Nas X",
+  "Tyler, The Creator",
+  "Frank Ocean",
+  "The Neighbourhood",
+  "Tame Impala",
+  "Lorde",
+  "The 1975",
+  "Imagine Dragons",
+  "Bastille",
+  "Glass Animals",
+  "The Chainsmokers",
+  "Zedd",
+  "David Guetta",
+  "Calvin Harris",
+  "Avicii",
+  "Swedish House Mafia",
+  "Martin Garrix",
+  "Kygo",
+  "Marshmello",
+  "Skrillex",
+  "Diplo",
+  "Major Lazer"
+];
+const input = document.getElementById("searchArtist");
+  const resultsBox = document.getElementById("searchResults");
+
+  // mostra sugestões conforme digita
+  input.addEventListener("input", function () {
+    const termo = this.value.toLowerCase().trim();
+
+    if (!termo) {
+      resultsBox.style.display = "none";
+      resultsBox.innerHTML = "";
+      return;
+    }
+
+    // filtra
+    const filtrados = ARTISTAS.filter((nome) =>
+      nome.toLowerCase().includes(termo)
+    ).slice(0, 10); // no máx 10
+
+    // se não achou nada
+    if (filtrados.length === 0) {
+      resultsBox.innerHTML =
+        '<li><span>Nenhum artista encontrado</span></li>';
+      resultsBox.style.display = "block";
+      return;
+    }
+
+    // monta a lista
+    resultsBox.innerHTML = filtrados
+      .map(
+        (nome) => `
+        <li data-valor="${nome}">
+          <span>${nome}</span>
+          <small>ver perfil</small>
+        </li>
+      `
+      )
+      .join("");
+
+    resultsBox.style.display = "block";
+  });
+
+  // clique na sugestão
+  resultsBox.addEventListener("click", function (e) {
+    const li = e.target.closest("li");
+    if (!li) return;
+    const valor = li.getAttribute("data-valor");
+    input.value = valor;
+    resultsBox.style.display = "none";
+
+    // aqui você pode redirecionar se quiser:
+    // window.location.href = "/artista/" + encodeURIComponent(valor);
+  });
+
+  // fecha se clicar fora
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".search-box")) {
+      resultsBox.style.display = "none";
+    }
+  });
+</script>
 </body>
 </html>

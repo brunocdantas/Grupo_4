@@ -3,37 +3,33 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Página de Login</title>
-
-  <!-- CSS do Django -->
+  <title>Login</title>
   <link rel="stylesheet" href="{% static 'core/css/usuario.css' %}">
 </head>
 <body>
   <div class="login-container">
     <div class="header-login">
-      <!-- usa static pra imagem também -->
       <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo da empresa" class="logo-inline">
       <h1>Bem-vindo</h1>
     </div>
 
     <p>Entre com suas credenciais para acessar sua conta</p>
 
-    <form>
-      <label for="email">Email</label>
-      <input type="email" id="email" placeholder="seu@email.com" required>
+    <form method="POST" action="{% url 'home' %}">
+  {% csrf_token %}
+  <label for="email">Email</label>
+  <input type="email" id="email" name="email" required>
 
-      <label for="senha">Senha</label>
-      <input type="password" id="senha" placeholder="••••••••" required>
+  <label for="senha">Senha</label>
+  <input type="password" id="senha" name="senha" required>
 
-      <button type="submit" class="btn">Entrar</button>
-    </form>
+  <button type="submit" class="btn">Entrar</button>
+</form>
 
     <div class="divider"></div>
-
     <button class="btn-outline">Criar conta</button>
-
     <p><a href="#">Esqueceu sua senha?</a></p>
   </div>
 </body>
 </html>
+

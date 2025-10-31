@@ -1,0 +1,148 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SHOWtime — Favoritos</title>
+
+  <!-- CSS dessa página -->
+  <link rel="stylesheet" href="{% static 'core/css/favoritos.css' %}">
+</head>
+<body>
+  <!-- fundo roxo -->
+  <div class="page-bg"></div>
+
+  <!-- topo -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="ShowTime" class="logo">
+      <h1 class="app-name">SHOWtime</h1>
+    </div>
+
+    <div class="user">
+      <a href="{% url 'home' %}" class="top-link">Início</a>
+      <a href="{% url 'favoritos' %}" class="top-link active">Favoritos</a>
+      <img src="{% static 'core/img/avatar_padrao.jpg' %}" alt="Usuário" class="avatar">
+      <h3 class="username">Olá, usuário</h3>
+    </div>
+  </header>
+
+  <!-- conteúdo -->
+  <main class="layout">
+    <!-- feed -->
+    <section class="feed" aria-label="Feed de artistas que você segue">
+      <!-- Post 1 -->
+      <article class="post">
+        <header class="post-head">
+          <div class="who">
+            <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh" class="mini">
+            <div>
+              <h3>Veigh</h3>
+              <time datetime="2025-06-26">26/06 • anúncio</time>
+            </div>
+          </div>
+          <button class="btn-ghost">Seguindo</button>
+        </header>
+
+        <p class="post-text">
+          Meu novo álbum <strong>“Eu Venci o Mundo”</strong> sai quinta às 20h.
+        </p>
+
+        <img src="{% static 'core/img/capa-album2.webp' %}" alt="Capa do álbum" class="post-media">
+
+        <footer class="post-actions">
+          <button class="btn-icon">👍 Curtir</button>
+          <button class="btn-icon">💬 Comentar</button>
+          <button class="btn-icon">↗ Compartilhar</button>
+        </footer>
+      </article>
+
+      <!-- Post 2 -->
+      <article class="post">
+        <header class="post-head">
+          <div class="who">
+            <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake" class="mini">
+            <div>
+              <h3>Drake</h3>
+              <time datetime="2025-10-14">ontem • atualização</time>
+            </div>
+          </div>
+          <button class="btn-ghost">Seguindo</button>
+        </header>
+        <p class="post-text">
+          Philly, you know the vibes 🦉<br>
+          Halloween night. 10PM. NOTO.
+        </p>
+        <footer class="post-actions">
+          <button class="btn-icon">👍 Curtir</button>
+          <button class="btn-icon">💬 Comentar</button>
+          <button class="btn-icon">↗ Compartilhar</button>
+        </footer>
+      </article>
+    </section>
+
+    <!-- lateral -->
+    <aside class="sidebar" aria-label="Painel do usuário">
+      <section class="card shows">
+        <h2>Seus shows favoritados ❤️</h2>
+
+        <a class="show-item" href="#">
+          <div class="icon">📅</div>
+          <div class="info">
+            <strong>Ferrugem • Rio de Janeiro, RJ</strong>
+            <span>11 de jan — Riocentro</span>
+            <span class="link">Comprar ingressos</span>
+          </div>
+        </a>
+
+        <a class="show-item" href="#">
+          <div class="icon">📅</div>
+          <div class="info">
+            <strong>Dua Lipa • Rio de Janeiro, RJ</strong>
+            <span>22 de nov — Engenhão</span>
+            <span class="link">Comprar ingressos</span>
+          </div>
+        </a>
+
+        <a class="show-item" href="#">
+          <div class="icon">📅</div>
+          <div class="info">
+            <strong>Alcione • Rio de Janeiro, RJ</strong>
+            <span>6 de dez — Via Parque</span>
+            <span class="link">Mais detalhes</span>
+          </div>
+        </a>
+      </section>
+
+      <section class="card favorites">
+        <h2>Artistas favoritados ❤️</h2>
+
+        <a class="artist" href="#">
+          <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh" class="thumb">
+          <div>
+            <strong>Veigh</strong>
+            <span>trap, funk</span>
+          </div>
+        </a>
+
+        <a class="artist" href="#">
+          <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake" class="thumb">
+          <div>
+            <strong>Drake</strong>
+            <span>hip hop, rap</span>
+          </div>
+        </a>
+
+        <a class="artist" href="#">
+          <img src="{% static 'core/img/lud_capa.webp' %}" alt="Ludmilla" class="thumb">
+          <div>
+            <strong>Ludmilla</strong>
+            <span>pagode, funk</span>
+          </div>
+        </a>
+      </section>
+    </aside>
+  </main>
+</body>
+</html>

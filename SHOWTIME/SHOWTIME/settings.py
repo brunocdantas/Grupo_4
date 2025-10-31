@@ -25,7 +25,15 @@ SECRET_KEY = "django-insecure-+@w$6_q*q!9pt#q4)^8gb6%gb+bkh-pwf!j+maywpz49_qxeah
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
+
+CSRF_TRUSTED_ORIGINS = [
+    "http://127.0.0.1:8000",
+    "http://localhost:8000",
+    "https://127.0.0.1:8000",
+    "https://localhost:8000",
+]
+
 
 
 # Application definition
@@ -121,3 +129,16 @@ STATIC_URL = "/static/"
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+from pathlib import Path
+import os
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# ...
+
+STATIC_URL = '/static/'
+
+# diz pro Django: “além dos estáticos dos apps, procure aqui também”
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'core', 'static'),
+]
