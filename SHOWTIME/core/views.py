@@ -32,3 +32,5 @@ def favoritos(request):
 def artistas(request):
     return render(request, 'core/artistas.html')
 
+def reveillon_poll(request):
+    return render(request, 'core/reveillon-poll.html')
