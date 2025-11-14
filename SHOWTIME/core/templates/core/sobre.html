@@ -1,0 +1,80 @@
+{% load static %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Sobre o ShowTime</title>
+  <link rel="stylesheet" href="{% static 'core/css/sobre.css' %}">
+</head>
+<script>
+(() => {
+  const navbar = document.querySelector(".navbar");
+  if (!navbar) return;
+
+  let lastY = window.scrollY;
+  let ticking = false;
+
+  function onScroll() {
+    const y = window.scrollY;
+    if (y > lastY && y > 20) {
+      navbar.classList.add("hidden");    // rolando pra baixo → esconde
+    } else {
+      navbar.classList.remove("hidden"); // rolando pra cima → mostra
+    }
+    lastY = y <= 0 ? 0 : y;
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", () => {
+    if (!ticking) {
+      requestAnimationFrame(onScroll);
+      ticking = true;
+    }
+  }, { passive: true });
+})();
+</script>
+
+<body>
+
+  <nav class="navbar">
+    <div class="brand">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+      <span class="app-name">ShowTime</span>
+    </div>
+  </nav>
+
+  <div class="container">
+    <h1>Sobre o ShowTime</h1>
+    <p class="subtitle">A plataforma que conecta artistas e fãs em um só lugar</p>
+
+    <div class="cards">
+      <div class="card">
+        <h2>🎵 O que é o ShowTime</h2>
+        <p>O ShowTime é um espaço criado para unir quem faz música e quem vive música. Aqui você descobre artistas, segue seus favoritos e acompanha novidades e shows em tempo real.</p>
+      </div>
+      <div class="card">
+        <h2>🚀 Como funciona</h2>
+        <ul>
+          <li>Pesquise artistas, bandas ou eventos;</li>
+          <li>Veja atualizações e lançamentos recentes;</li>
+          <li>Salve seus favoritos e monte sua lista de shows;</li>
+          <li>Compartilhe descobertas com seus amigos.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h2>🌟 Nosso objetivo</h2>
+        <p>Fazer da experiência musical algo mais próximo, humano e interativo. Criamos o ShowTime como um projeto que mistura design, tecnologia e amor pela música.</p>
+      </div>
+    </div>
+
+    <div class="cta">
+      <h2>Pronto para descobrir novas músicas?</h2>
+      <a href="{% url 'home' %}">Voltar para a Home</a>
+    </div>
+  </div>
+
+  <footer>
+    © 2025 ShowTime — plataforma de conexão entre artistas e fãs.
+  </footer>
+</body>
+</html>

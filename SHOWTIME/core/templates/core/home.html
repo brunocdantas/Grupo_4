@@ -9,13 +9,7 @@
 </head>
 
 <body>
-  {% if user_email %}
-  <p>Olá, {{ user_email }}!</p>
-  <a href="{% url 'usuario' %}">Sair</a>
-{% else %}
-  <a href="{% url 'usuario' %}">Entrar / Cadastre-se</a>
-{% endif %}
-
+ 
   <!-- Fundo roxo -->
   <div class="page-bg"></div>
 
@@ -29,6 +23,8 @@
       <a href="{% url 'favoritos' %}" class="btn-secondary">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link">Artistas</a>
       <a href="{% url 'usuario' %}" class="btn-primary">Entrar / Cadastre-se</a>
+      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+
 
 
       <!-- botão de login removido por enquanto -->

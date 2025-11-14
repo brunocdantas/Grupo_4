@@ -142,3 +142,5 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core', 'static'),
 ]
+
+TEMPLATES[0]["APP_DIRS"] = True

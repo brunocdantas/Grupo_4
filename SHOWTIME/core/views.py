@@ -31,3 +31,4 @@ def favoritos(request):
 
 def artistas(request):
     return render(request, 'core/artistas.html')
+
