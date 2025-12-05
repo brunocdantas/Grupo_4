@@ -18,12 +18,21 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('core.urls')),   # já está usando o app core
+
+  
+    path('', include('core.urls')),
+
+  
+    path(
+        'login/',
+        auth_views.LoginView.as_view(template_name='registration/login.html'),
+        name='login',
+    ),
 ]
 
-# só pra desenvolvimento (DEBUG = True)
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL, document_root=None)

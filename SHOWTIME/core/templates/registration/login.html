@@ -1,0 +1,44 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | ShowTime</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/login.css' %}">
+</head>
+<body>
+  <div class="login-container">
+    <div class="header-login">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo-inline">
+      <h1>Bem-vindo de volta</h1>
+    </div>
+
+    <p>Entre com seu usuário e senha para acessar o ShowTime.</p>
+
+    <form method="post" action="{% url 'login' %}">
+        {% csrf_token %}
+
+        {{ form.non_field_errors }}
+
+        <div class="form-group">
+            {{ form.username.label_tag }}
+            {{ form.username }}
+            {{ form.username.errors }}
+        </div>
+
+        <div class="form-group">
+            {{ form.password.label_tag }}
+            {{ form.password }}
+            {{ form.password.errors }}
+        </div>
+
+        <button type="submit" class="btn">Entrar</button>
+    </form>
+
+    <div class="divider"></div>
+    
+  </div>
+</body>
+</html>

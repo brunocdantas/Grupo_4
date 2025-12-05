@@ -1,0 +1,10 @@
+Crie um ambiente virtual, se ele não existir.
+python -m venv venv
+
+Ative o ambiente virtual:
+source venv/bin/activate
+
+Aproveite para criar um usuário, caso ainda não tenha criado. Se você está em dúvida, crie um novo usuário e está resolvido.
+python manage.py createsuperuser
+
+python manage.py runserver 0.0.0.0:8000

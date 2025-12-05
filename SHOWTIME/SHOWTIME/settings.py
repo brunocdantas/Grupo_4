@@ -25,6 +25,7 @@ SECRET_KEY = "django-insecure-+@w$6_q*q!9pt#q4)^8gb6%gb+bkh-pwf!j+maywpz49_qxeah
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+
 ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -33,7 +34,6 @@ CSRF_TRUSTED_ORIGINS = [
     "https://127.0.0.1:8000",
     "https://localhost:8000",
 ]
-
 
 
 # Application definition
@@ -144,3 +144,7 @@ STATICFILES_DIRS = [
 ]
 
 TEMPLATES[0]["APP_DIRS"] = True
+
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/'
+LOGOUT_REDIRECT_URL = '/'

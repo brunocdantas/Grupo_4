@@ -1,0 +1,164 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Inter', sans-serif;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* fundo roxo */
+  background-image: url("/static/core/img/fundo_roxo_deitado.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+
+  font-family: 'Inter', sans-serif;
+}
+
+/* container do login */
+.login-container {
+  background: rgba(255, 255, 255, 0.05); /* leve transparência — não bloqueia o fundo */
+  backdrop-filter: blur(6px); /* efeito de vidro fosco */
+  width: 600px;
+  max-width: 90vw;
+  padding: 60px 48px;
+  border-radius: 16px;
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  color: #f6f6f6;
+}
+
+.header-login {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.logo-inline {
+  width: 120px;
+  height: auto;
+}
+
+.header-login h1 {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 600;
+  color: #fff;
+}
+
+p {
+  color: #eee;
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+/* alinhar o form por dentro do card */
+form {
+  text-align: left;
+}
+
+/* grupos de campos do Django */
+.form-group {
+  margin-bottom: 18px;
+}
+
+label {
+  display: block;
+  font-size: 14px;
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.1);
+  font-size: 14px;
+  color: #fff;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+input:focus {
+  outline: none;
+  border-color: #fff;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* botão principal */
+.btn {
+  width: 100%;
+  background-color: #0f0f1d;
+  color: #fff;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background 0.2s ease-in-out;
+  margin-top: 8px;
+}
+
+.btn:hover {
+  background-color: #000;
+}
+
+/* divisória */
+.divider {
+  margin: 20px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.divider::after {
+  content: "ou";
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0 8px;
+  color: #fff;
+  font-size: 13px;
+}
+
+/* link extra (esqueci a senha, etc.) */
+a {
+  display: inline-block;
+  margin-top: 12px;
+  color: #ccc;
+  font-size: 13px;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* erros do Django */
+.errorlist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 8px;
+  color: #ffb3b3;
+  font-size: 13px;
+}
+
+.non-field-errors {
+  margin-bottom: 10px;
+  color: #ffb3b3;
+  font-size: 13px;
+}

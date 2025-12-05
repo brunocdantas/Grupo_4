@@ -22,6 +22,13 @@
       <a href="{% url 'home' %}" class="link">Início</a>
       <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link active">Artistas</a>
+     {% if user.is_authenticated %}
+    <p>{{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <p></p>
+    <a href="{% url 'login' %}" class="botao">Login</a>
+  {% endif %}
     </nav>
 
     <a href="{% url 'usuario' %}" class="btn-top">Entrar / Cadastrar-se</a>

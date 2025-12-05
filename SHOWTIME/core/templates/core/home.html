@@ -22,12 +22,16 @@
     <nav class="nav-actions">
       <a href="{% url 'favoritos' %}" class="btn-secondary">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link">Artistas</a>
-      <a href="{% url 'usuario' %}" class="btn-primary">Entrar / Cadastre-se</a>
-      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+      {% if user.is_authenticated %}
+    <p>{{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <p></p>
+    <a href="{% url 'login' %}" class="botao">Login</a>
+  {% endif %}
 
-
-
-      <!-- botão de login removido por enquanto -->
+  <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+</nav>
     </nav>
   </header>
 
