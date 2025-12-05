@@ -35,7 +35,7 @@ CSRF_TRUSTED_ORIGINS = [
     "https://localhost:8000",
 ]
 
-
+CORS_ORIGIN_ALLOW_ALL = True
 # Application definition
 
 INSTALLED_APPS = [
