@@ -1,0 +1,176 @@
+/* RESET */
+/* ===================== HEADER DO HOME ===================== */
+
+/* Fundo translúcido igual ao home */
+/* ====== HEADER DA PÁGINA CORINGA ====== */
+/* topbar */
+.topbar {
+  background: #fff;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand-link {
+  text-decoration: none !important;   /* remove o sublinhado */
+  color: inherit !important;          /* mantém a cor do texto original */
+}
+
+.brand-link:visited {
+  color: inherit !important;          /* impede que fique roxo depois do clique */
+}
+
+.brand-link:hover {
+  text-decoration: none;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.logo {
+  width: 80px;
+  height: auto;
+}
+
+.app-name {
+  font-weight: 700;
+  font-size: 45px;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.nav-actions .link {
+  color: #303441;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background: #0f0f1d;
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn-secondary {
+  background: rgba(0,0,0,0.03);
+  color: #303441;
+  padding: 7px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+/* ====== FUNDO ====== */
+body {
+    background: url("/static/core/img/fundo_roxo_deitado.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #fff;
+}
+
+/* ====== HERO (FOTO DO ARTISTA) ====== */
+.artist-header {
+    width: 100%;
+    height: 60vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.artist-header img.artist-photo {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
+    filter: brightness(75%);
+}
+
+.artist-header .info {
+    position: absolute;
+    bottom: 40px;
+    left: 60px;
+}
+
+.artist-header h1 {
+    font-size: 68px;
+    font-weight: 900;
+    text-shadow: 0px 4px 15px rgba(0,0,0,0.6);
+}
+
+.artist-header p {
+    font-size: 22px;
+    margin-top: 6px;
+    opacity: 0.9;
+}
+
+/* ====== PÁGINA ====== */
+.artist-page {
+    max-width: 1050px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* ===== BLOCO ÚNICO DAS INFORMAÇÕES ===== */
+.artist-content {
+    max-width: 1150px;
+    margin: 60px auto;
+    padding: 45px 55px;
+
+    /* Visual igual aos blocos do Home */
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 22px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+
+    color: #000000;
+}
+
+/* Títulos das seções */
+.artist-content h2 {
+    font-size: 36px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+/* ===== TEXTO NORMAL (AJUSTE NOVO) ===== */
+.artist-content p,
+.artist-content li {
+    color: #4a4a5b;        /* cinza igual ao Home */
+    font-size: 1rem;       /* menor, mais elegante */
+    line-height: 1.65;
+    letter-spacing: 0.2px;
+}
+
+/* Espaçamento entre seções */
+.artist-content section {
+    margin-bottom: 50px;
+}
+
+.artist-content ul {
+    padding-left: 20px;
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 768px) {
+    .artist-header h1 {
+        font-size: 40px;
+    }
+
+    .artist-header {
+        height: 45vh;
+    }
+}

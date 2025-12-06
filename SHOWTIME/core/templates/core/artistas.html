@@ -6,34 +6,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ShowTime — Artistas</title>
   <link rel="stylesheet" href="{% static 'core/css/artistas.css' %}">
+
 </head>
 <body>
   <!-- fundo -->
   <div class="page-bg"></div>
 
-  <!-- TOPBAR -->
+ <!-- Topbar -->
+  <!-- Topbar -->
   <header class="topbar">
-    <div class="brand">
-      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="ShowTime" class="logo">
+  <div class="brand">
+    <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+    <a href="{% url 'home' %}" class="brand-link">
       <span class="app-name">ShowTime</span>
-    </div>
+    </a>
+  </div>
 
-    <nav class="nav-links">
-      <a href="{% url 'home' %}" class="link">Início</a>
-      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
-      <a href="{% url 'artistas' %}" class="link active">Artistas</a>
-     {% if user.is_authenticated %}
-    <p>{{ user.username }}!</p>
-    <a href="{% url 'logout' %}">Logout</a>
-  {% else %}
-    <p></p>
-    <a href="{% url 'login' %}" class="botao">Login</a>
-  {% endif %}
-    </nav>
+  <nav class="nav-links">
+    <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
+    <a href="{% url 'artistas' %}" class="link active">Artistas</a>
 
-    <a href="{% url 'usuario' %}" class="btn-top">Entrar / Cadastrar-se</a>
-  </header>
+    {% if user.is_authenticated %}
+      <span class="user-label">{{ user.username }}!</span>
+      <a href="{% url 'logout' %}" class="link">Logout</a>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn-top">Login</a>
+    {% endif %}
 
+    <a href="{% url 'sobre' %}" class="link">Sobre</a>
+  </nav>
+</header>
   <!-- CONTEÚDO -->
   <main class="page">
     <!-- barra de busca -->

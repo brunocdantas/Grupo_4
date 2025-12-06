@@ -41,18 +41,16 @@
       <div class="search-box">
 
 
-
-        <form action="" method="post">
-        {% csrf_token %}
-        <input
-    type="text"
-    id="searchArtist"
-    placeholder="Buscar artistas, bandas ou eventos..."
-    autocomplete="off"
-  />
-  <span class="search-icon">🔍</span>
-        <button type="submit">Buscar</button>
-    </form>
+<form action="{% url 'coringa_page' %}" method="get">
+    <input
+        type="text"
+        name="q"
+        id="searchArtist"
+        placeholder="Buscar artistas, bandas ou eventos..."
+        autocomplete="off"
+    />
+    <button type="submit">Buscar</button>
+</form>
 
 
   <!-- lista que aparece embaixo -->

@@ -1,3 +1,4 @@
+/* RESET GLOBAL */
 * {
   box-sizing: border-box;
   font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -9,7 +10,7 @@ body {
   min-height: 100vh;
 }
 
-/* fundo roxo */
+/* FUNDO ROXO */
 .page-bg {
   position: fixed;
   inset: 0;
@@ -18,7 +19,8 @@ body {
   filter: saturate(108%) contrast(105%);
 }
 
-/* topbar */
+/* ---------- TOPBAR ---------- */
+
 .topbar {
   background: #fff;
   height: 60px;
@@ -32,51 +34,99 @@ body {
   z-index: 10;
 }
 
+/* logo + nome */
 .brand {
+  width: 80px;
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
 .logo {
-  width: 30px;
+  width: 80px;
   height: auto;
 }
-.app-name {
-  font-weight: 700;
-  font-size: 19px;
+
+.brand-link {
+  text-decoration: none;
+  color: #0f1222;
 }
 
-.nav-links {
-  display: flex;
-  gap: 20px;
+.brand-link:visited {
+  color: #0f1222;
 }
-.nav-links .link {
+
+.brand-link:hover {
+  text-decoration: none;
+  opacity: 0.8;
+}
+
+.app-name {
+  font-weight: 700;
+  font-size: 22px;
+}
+
+/* navegação da direita */
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.nav-actions p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* links normais da topbar (Favoritos, Artistas, Logout, Sobre) */
+.nav-actions a,
+.nav-actions a:visited {
   text-decoration: none;
   color: #333;
+  font-size: 14px;
+}
+
+.nav-actions a:hover {
+  text-decoration: underline;
+}
+
+/* botão secundário (Favoritos) */
+.btn-secondary {
+  background: rgba(0,0,0,0.03);
+  color: #303441 !important;
+  padding: 7px 14px;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 1px solid rgba(0,0,0,0.05);
   font-weight: 500;
 }
-.nav-links .link.active {
+
+/* botão "Login" e "Sobre" (classe .botao) */
+.botao {
+  padding: 7px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(0,0,0,0.1);
+  background: transparent;
+  color: #303441;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* se quiser destacar o link atual manualmente, pode usar class="link active" no HTML */
+.nav-actions .link.active {
   color: #5a32e2;
 }
 
-.btn-top {
-  background: #0f0f1d;
-  color: #fff;
-  padding: 8px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-}
+/* ---------- CONTEÚDO PRINCIPAL ---------- */
 
-/* conteúdo principal */
 .page {
   max-width: 1100px;
   margin: 26px auto 50px auto;
   padding: 0 16px;
 }
 
-/* busca */
+/* BUSCA */
 .search-area {
   background: rgba(255,255,255,0.85);
   border-radius: 18px;
@@ -90,13 +140,16 @@ body {
   margin: 0 0 6px 0;
   font-size: 1.8rem;
 }
+
 .search-area p {
   margin: 0 0 16px 0;
   color: #5e6270;
 }
+
 .search-box {
   position: relative;
 }
+
 .search-box input {
   width: 100%;
   border: 1px solid rgba(0,0,0,0.05);
@@ -105,6 +158,7 @@ body {
   font-size: 14px;
   background: rgba(255,255,255,0.5);
 }
+
 .search-box .icon {
   position: absolute;
   right: 16px;
@@ -113,7 +167,7 @@ body {
   opacity: .6;
 }
 
-/* caixa de resultados */
+/* CAIXA DE RESULTADOS */
 .results-box {
   position: absolute;
   top: 42px;
@@ -128,15 +182,17 @@ body {
   display: none;
   z-index: 20;
 }
+
 .results-box li {
   padding: 8px 14px;
   cursor: pointer;
 }
+
 .results-box li:hover {
   background: rgba(90,50,226,0.08);
 }
 
-/* grid de artistas */
+/* GRID DE ARTISTAS */
 .artists-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
@@ -151,6 +207,7 @@ body {
   box-shadow: 0 14px 30px rgba(0,0,0,0.02);
   backdrop-filter: blur(4px);
 }
+
 .artist-card img {
   width: 100%;
   height: 150px;
@@ -159,14 +216,17 @@ body {
   background: #eee;
   margin-bottom: 10px;
 }
+
 .artist-card h3 {
   margin: 0 0 4px 0;
 }
+
 .artist-card p {
   margin: 0 0 10px 0;
   font-size: 13px;
   color: #6a6f7a;
 }
+
 .btn-follow {
   background: #0f0f1d;
   color: #fff;
@@ -178,14 +238,18 @@ body {
   font-size: 13px;
 }
 
-/* responsivo */
+/* RESPONSIVO */
 @media (max-width: 720px) {
   .topbar {
+    padding: 0 16px;
     gap: 12px;
   }
-  .nav-links {
-    gap: 12px;
+
+  .nav-actions {
+    gap: 10px;
+    font-size: 13px;
   }
+
   .search-area h1 {
     font-size: 1.4rem;
   }

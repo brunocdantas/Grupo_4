@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ artist.name }} | ShowTime</title>
+    <link rel="stylesheet" href="{% static 'core/css/coringa.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}"> 
+    <!-- usa o mesmo css do header -->
+</head>
+
+<body>
+
+ <!-- Topbar -->
+  <header class="topbar">
+    <div class="brand">
+      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+      <a href="{% url 'home' %}" class="brand-link">
+      <span class="app-name">ShowTime</span>
+</a>
+    </div>
+    <nav class="nav-actions">
+      <a href="{% url 'favoritos' %}" class="btn-secondary">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      {% if user.is_authenticated %}
+    <p>{{ user.username }}!</p>
+    <a href="{% url 'logout' %}">Logout</a>
+  {% else %}
+    <p></p>
+    <a href="{% url 'login' %}" class="botao">Login</a>
+  {% endif %}
+
+  <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+</nav>
+    </nav>
+  </header>
+
+<!-- HERO DO ARTISTA -->
+<div class="artist-header">
+    <img src="{{ artist.image.url }}" class="artist-photo">
+
+    <div class="info">
+        <h1>{{ artist.name }}</h1>
+        <p>{{ artist.genre }} — {{ artist.country }}</p>
+        <p>{{ artist.followers }} seguidores</p>
+    </div>
+</div>
+
+<!-- BLOCO ÚNICO DE INFORMAÇÃO -->
+<div class="artist-content">
+
+    <section>
+        <h2>Biografia</h2>
+        <p>{{ artist.biography }}</p>
+    </section>
+
+    <section>
+        <h2>Top músicas</h2>
+        <ul>
+            {% for m in top_musics %}
+                <li>{{ m }}</li>
+            {% endfor %}
+        </ul>
+    </section>
+
+    <section>
+        <h2>Próximos shows</h2>
+        <p>{{ artist.upcoming_shows }}</p>
+    </section>
+
+</div>
+
+</body>
+</html>
