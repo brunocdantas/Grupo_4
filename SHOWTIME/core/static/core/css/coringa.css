@@ -76,101 +76,192 @@
   border: 1px solid rgba(0,0,0,0.05);
 }
 
-/* ====== FUNDO ====== */
+/* ===== RESET BÁSICO ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===== BASE DA PÁGINA ===== */
 body {
-    background: url("/static/core/img/fundo_roxo_deitado.png") no-repeat center center fixed;
-    background-size: cover;
-    color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #111827;
+  line-height: 1.6;
+
+  /* --- FUNDO ROXO DEITADO --- */
+  background-image: url('../img/fundo_roxo_deitado.png');
+  background-size: cover;          /* ocupa toda a tela */
+  background-position: center;     /* centraliza */
+  background-repeat: no-repeat;    /* não repete */
+  background-attachment: fixed;    /* faz o fundo ficar preso enquanto a página rola */
 }
 
-/* ====== HERO (FOTO DO ARTISTA) ====== */
+
+/* Container geral da página */
+main, .page-wrapper {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 32px 16px 48px;
+}
+
+/* Se você não tiver <main> ou .page-wrapper,
+   o body ainda vai funcionar bem. */
+
+/* ===== HERO DO ARTISTA ===== */
 .artist-header {
-    width: 100%;
-    height: 60vh;
-    position: relative;
-    overflow: hidden;
+  max-width: 1080px;
+  margin: 0 auto 32px;
+  padding: 24px 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.06);
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-.artist-header img.artist-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-bottom: 2px solid rgba(255, 255, 255, 0.15);
-    filter: brightness(75%);
+/* Foto do artista */
+.artist-photo {
+  width: 260px;
+  height: 260px;
+  border-radius: 28px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.18);
+  transition: transform 0.25s ease;
 }
 
+.artist-photo:hover {
+  transform: scale(1.03);
+}
+
+/* Bloco de informações do artista */
 .artist-header .info {
-    position: absolute;
-    bottom: 40px;
-    left: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .artist-header h1 {
-    font-size: 68px;
-    font-weight: 900;
-    text-shadow: 0px 4px 15px rgba(0,0,0,0.6);
+  font-size: 5.5rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
 }
 
 .artist-header p {
-    font-size: 22px;
-    margin-top: 6px;
-    opacity: 0.9;
+  font-size: 1.2rem;
+  color: #6b7280;
 }
 
-/* ====== PÁGINA ====== */
-.artist-page {
-    max-width: 1050px;
-    margin: 40px auto;
-    padding: 0 20px;
+/* Destacar seguidores um pouco mais */
+.artist-header p:last-of-type {
+  font-weight: 500;
+  color: #4b5563;
 }
 
-/* ===== BLOCO ÚNICO DAS INFORMAÇÕES ===== */
+/* ===== BLOCO ÚNICO DE INFORMAÇÃO ===== */
 .artist-content {
-    max-width: 1150px;
-    margin: 60px auto;
-    padding: 45px 55px;
+  max-width: 1080px;
+  margin: 0 auto;
+  margin-top: 16px;
+  padding: 24px;
+  background: #ffffff;
+  border-radius: 20px;
+  box-shadow: 0 18px 45px rgba(15, 23, 42, 0.04);
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px 40px;
+}
 
-    /* Visual igual aos blocos do Home */
-    background: rgba(255, 255, 255, 0.8);
-    border-radius: 22px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
-
-    color: #000000;
+/* Em telas grandes:
+   - Biografia ocupa a coluna maior
+   - Top músicas e Próximos shows ocupam colunas menores */
+.artist-content section {
+  border-radius: 16px;
+  padding: 0;
 }
 
 /* Títulos das seções */
 .artist-content h2 {
-    font-size: 36px;
-    font-weight: 700;
-    margin-bottom: 12px;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4b5563;
 }
 
-/* ===== TEXTO NORMAL (AJUSTE NOVO) ===== */
-.artist-content p,
-.artist-content li {
-    color: #4a4a5b;        /* cinza igual ao Home */
-    font-size: 1rem;       /* menor, mais elegante */
-    line-height: 1.65;
-    letter-spacing: 0.2px;
+/* Texto geral */
+.artist-content p {
+  font-size: 0.95rem;
+  color: #374151;
 }
 
-/* Espaçamento entre seções */
-.artist-content section {
-    margin-bottom: 50px;
+/* ===== BIOGRAFIA EM DESTAQUE ===== */
+.artist-content section:nth-of-type(1) {
+  grid-column: 1 / 2;
 }
 
-.artist-content ul {
-    padding-left: 20px;
+.artist-content section:nth-of-type(1) p {
+  text-align: justify;
 }
 
-/* ===== RESPONSIVO ===== */
+/* ===== TOP MÚSICAS ===== */
+.artist-content section:nth-of-type(2) ul {
+  list-style: none;
+  margin-top: 4px;
+}
+
+.artist-content section:nth-of-type(2) li {
+  font-size: 0.95rem;
+  padding: 8px 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.artist-content section:nth-of-type(2) li:last-child {
+  border-bottom: none;
+}
+
+/* ===== PRÓXIMOS SHOWS ===== */
+.artist-content section:nth-of-type(3) {
+  grid-column: 2 / 3;
+}
+
+/* Se você quiser um estilo “tag” para a lista de shows
+   depois pode transformar o texto em lista. */
+
+/* ===== RESPONSIVIDADE ===== */
 @media (max-width: 768px) {
-    .artist-header h1 {
-        font-size: 40px;
-    }
+  .artist-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 18px;
+  }
 
-    .artist-header {
-        height: 45vh;
-    }
+  .artist-photo {
+    width: 120px;
+    height: 120px;
+    border-radius: 18px;
+  }
+
+  .artist-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .artist-content {
+    grid-template-columns: 1fr;
+    padding: 20px 18px;
+  }
+
+  .artist-content section {
+    grid-column: 1 / -1 !important;
+  }
+}
+
+/* ===== DETALHE SUTIL AO PASSAR O MOUSE (NICHO FÃ) ===== */
+.artist-content section:nth-of-type(2) li:hover {
+  transform: translateX(4px);
+  transition: all 0.18s ease-out;
+  color: #111827;
 }

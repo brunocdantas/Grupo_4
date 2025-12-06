@@ -22,66 +22,79 @@ body {
 }
 /* ===== FIM FUNDO ===== */
 
-/* topbar */
+/* ===== TOPBAR ===== */
+
 .topbar {
-  background: #fff;
+  background: #ffffff;
   height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 36px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+  padding: 0 32px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
   position: sticky;
   top: 0;
   z-index: 10;
 }
 
-.brand {
+/* ------ LOGO + TEXTO ------ */
+
+.brand-link {
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 8px;
+  text-decoration: none;     /* sem sublinhado */
+  color: #000;               /* cor preta */
 }
 
 .logo {
-  width: 80px;
+  width: 42px;
   height: auto;
 }
 
 .app-name {
+  font-size: 22px;
   font-weight: 700;
-  font-size: 45px;
+  letter-spacing: 0.5px;
+  color: #000;               /* garante preto */
 }
+
+/* ------ LINKS DA DIREITA ------ */
 
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 20px;
 }
 
-.nav-actions .link {
-  color: #303441;
-  text-decoration: none;
+.nav-actions a {
+  text-decoration: none !important;  /* remove sublinhado */
+  color: #000 !important;            /* preto */
+  font-size: 15px;
   font-weight: 500;
 }
 
-.btn-primary {
-  background: #0f0f1d;
-  color: #fff !important;
-  padding: 8px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
+.nav-actions a:hover {
+  opacity: 0.6;                       /* hover elegante */
 }
 
-.btn-secondary {
-  background: rgba(0,0,0,0.03);
-  color: #303441;
-  padding: 7px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.05);
+.nav-actions p {
+  margin: 0;
+  color: #000;
+  font-size: 15px;
 }
 
+/* Remove estilos herdados de classes antigas */
+
+.btn-secondary,
+.botao,
+.link {
+  background: none !important;
+  border: none !important;
+  padding: 0 !important;
+  color: #000 !important;
+  font-weight: 500;
+}
 /* hero */
 .hero {
   max-width: 1100px;

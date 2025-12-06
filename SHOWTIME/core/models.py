@@ -7,13 +7,10 @@ class Artist(models.Model):
     id = models.AutoField(primary_key=True)
 
     # Informações básicas
+     
+    
     name = models.CharField(max_length=255, db_column='NAME')
-    image = models.ImageField(
-        upload_to='artists/',
-        null=True,
-        blank=True,
-        db_column='IMAGE'
-    )
+    image = models.ImageField(upload_to='artists/', blank=True, null=True,db_column='IMAGE')
     biography = models.TextField(db_column='BIOGRAPHY', blank=True)
 
     # Informações musicais
@@ -31,7 +28,7 @@ class Artist(models.Model):
     # Dados extras importantes
     genre = models.CharField(max_length=100, db_column='GENRE', blank=True)
     country = models.CharField(max_length=100, db_column='COUNTRY', blank=True)
-    followers = models.IntegerField(db_column='FOLLOWERS', default=0)
+    followers = models.TextField(db_column='FOLLOWERS')
     social_links = models.TextField(
         db_column='SOCIAL_LINKS',
         blank=True,

@@ -132,20 +132,21 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 from pathlib import Path
 import os
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+from pathlib import Path
+import os
 
-# ...
+BASE_DIR = Path(__file__).resolve().parent.parent
 
 STATIC_URL = '/static/'
 
-# diz pro Django: “além dos estáticos dos apps, procure aqui também”
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'core', 'static'),
 ]
 
-TEMPLATES[0]["APP_DIRS"] = True
+# >>> AQUI: mídias (fotos do banco de dados)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGIN_URL = '/login/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
-
