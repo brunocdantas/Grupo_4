@@ -9,5 +9,5 @@ urlpatterns = [
     path('artistas/', views.artistas, name='artistas'),
     path('sobre/', TemplateView.as_view(template_name='core/sobre.html'), name='sobre'),
     path('logout/', views.custom_logout, name='logout'),
-     path("coringa/", views.coringa_page, name="coringa_page"),
+    path("coringa/", views.coringa_page, name="coringa_page"),
 ]

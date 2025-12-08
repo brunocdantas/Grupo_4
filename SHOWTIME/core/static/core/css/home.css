@@ -65,7 +65,10 @@ body {
   display: flex;
   align-items: center;
   gap: 20px;
+  text-decoration: none !important;   /* remove o sublinhado */
+  color: inherit !important;          /* mantém a cor do texto original */
 }
+
 
 .nav-actions a {
   text-decoration: none !important;  /* remove sublinhado */
@@ -75,13 +78,17 @@ body {
 }
 
 .nav-actions a:hover {
-  opacity: 0.6;                       /* hover elegante */
+  opacity: 0.6;
+  text-decoration: none !important;   /* remove o sublinhado */
+  color: inherit !important;          /* mantém a cor do texto original */                       /* hover elegante */
 }
 
 .nav-actions p {
   margin: 0;
   color: #000;
   font-size: 15px;
+  text-decoration: none !important;   /* remove o sublinhado */
+  color: inherit !important;          /* mantém a cor do texto original */
 }
 
 /* Remove estilos herdados de classes antigas */

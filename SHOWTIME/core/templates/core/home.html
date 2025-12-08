@@ -20,7 +20,7 @@
       <span class="app-name">ShowTime</span>
     </div>
     <nav class="nav-actions">
-      <a href="{% url 'favoritos' %}" class="btn-secondary">Favoritos</a>
+      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link">Artistas</a>
       {% if user.is_authenticated %}
     <p>{{ user.username }}!</p>
@@ -47,7 +47,7 @@
         name="q"
         id="searchArtist"
         placeholder="Buscar artistas, bandas ou eventos..."
-        autocomplete="off"
+        autocomplete="on"
     />
     <button type="submit">Buscar</button>
 </form>
