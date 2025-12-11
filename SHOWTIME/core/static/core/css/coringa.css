@@ -4,6 +4,7 @@
 /* Fundo translúcido igual ao home */
 /* ====== HEADER DA PÁGINA CORINGA ====== */
 /* topbar */
+
 .topbar {
   background: #fff;
   height: 60px;
@@ -15,19 +16,6 @@
   position: sticky;
   top: 0;
   z-index: 10;
-}
-
-.brand-link {
-  text-decoration: none !important;   /* remove o sublinhado */
-  color: inherit !important;          /* mantém a cor do texto original */
-}
-
-.brand-link:visited {
-  color: inherit !important;          /* impede que fique roxo depois do clique */
-}
-
-.brand-link:hover {
-  text-decoration: none;
 }
 
 .brand {
@@ -46,36 +34,33 @@
   font-size: 45px;
 }
 
+/* links da direita */
+
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 14px;
 }
 
-.nav-actions .link {
+.nav-actions .link,
+.nav-actions .botao,
+.nav-actions a,
+.nav-actions a:visited {
   color: #303441;
   text-decoration: none;
   font-weight: 500;
+  font-size: 14px;
 }
 
-.btn-primary {
-  background: #0f0f1d;
-  color: #fff !important;
-  padding: 8px 18px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
+.nav-actions a:hover {
+  opacity: 0.7;
 }
 
-.btn-secondary {
-  background: rgba(0,0,0,0.03);
+.nav-actions p {
+  margin: 0;
+  font-size: 14px;
   color: #303441;
-  padding: 7px 14px;
-  border-radius: 8px;
-  text-decoration: none;
-  border: 1px solid rgba(0,0,0,0.05);
 }
-
 /* ===== RESET BÁSICO ===== */
 * {
   margin: 0;
@@ -228,6 +213,26 @@ main, .page-wrapper {
   grid-column: 2 / 3;
 }
 
+/* ========== RODAPÉ BRANCO ========== */
+
+.footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  padding: 18px 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.footer p {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 16px;
+  color: #303441;
+  font-size: 14px;
+}
+
 /* Se você quiser um estilo “tag” para a lista de shows
    depois pode transformar o texto em lista. */
 
@@ -265,3 +270,5 @@ main, .page-wrapper {
   transition: all 0.18s ease-out;
   color: #111827;
 }
+
+

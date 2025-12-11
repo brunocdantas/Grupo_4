@@ -1,82 +1,199 @@
 {% load static %}
-<!doctype html>
-<html lang="pt-br">
+<!DOCTYPE html>
+<html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <title>Sobre o ShowTime</title>
-  <link rel="stylesheet" href="{% static 'core/css/sobre.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTime | Sobre</title>
+  <link rel="stylesheet" href="/static/core/css/sobre.css?v=999">
 </head>
-<script>
-(() => {
-  const navbar = document.querySelector(".navbar");
-  if (!navbar) return;
-
-  let lastY = window.scrollY;
-  let ticking = false;
-
-  function onScroll() {
-    const y = window.scrollY;
-    if (y > lastY && y > 20) {
-      navbar.classList.add("hidden");    // rolando pra baixo → esconde
-    } else {
-      navbar.classList.remove("hidden"); // rolando pra cima → mostra
-    }
-    lastY = y <= 0 ? 0 : y;
-    ticking = false;
-  }
-
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      requestAnimationFrame(onScroll);
-      ticking = true;
-    }
-  }, { passive: true });
-})();
-</script>
 
 <body>
+  <!-- Fundo roxo -->
+  <div class="page-bg"></div>
 
-  <nav class="navbar">
+  <!-- Topbar (igual home) -->
+  <header class="topbar">
     <div class="brand">
-      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
-      <span class="app-name">ShowTime</span>
-    </div>
-  </nav>
-
-  <div class="container">
-    <h1>Sobre o ShowTime</h1>
-    <p class="subtitle">A plataforma que conecta artistas e fãs em um só lugar</p>
-
-    <div class="cards">
-      <div class="card">
-        <h2>🎵 O que é o ShowTime</h2>
-        <p>O ShowTime é um espaço criado para unir quem faz música e quem vive música. Aqui você descobre artistas, segue seus favoritos e acompanha novidades e shows em tempo real.</p>
-      </div>
-      <div class="card">
-        <h2>🚀 Como funciona</h2>
-        <ul>
-          <li>Pesquise artistas, bandas ou eventos;</li>
-          <li>Veja atualizações e lançamentos recentes;</li>
-          <li>Salve seus favoritos e monte sua lista de shows;</li>
-          <li>Compartilhe descobertas com seus amigos.</li>
-        </ul>
-      </div>
-      <div class="card">
-        <h2>🌟 Nosso objetivo</h2>
-        <p>Fazer da experiência musical algo mais próximo, humano e interativo. Criamos o ShowTime como um projeto que mistura design, tecnologia e amor pela música.</p>
-      </div>
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+        <span class="app-name">ShowTime</span>
+      </a>
     </div>
 
-    <div class="cta">
-      <h2>Pronto para descobrir novas músicas?</h2>
-      <a href="{% url 'home' %}">Voltar para a Home</a>
-    </div>
-  </div>
+    <nav class="nav-actions">
+      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link">Artistas</a>
 
-  <footer>
-    © 2025 ShowTime — plataforma de conexão entre artistas e fãs.
-  </footer>
+      {% if user.is_authenticated %}
+        <p>{{ user.username }}.</p>
+        <a href="{% url 'logout' %}" class="link">Logout</a>
+      {% else %}
+        <p></p>
+        <a href="{% url 'login' %}" class="botao">Login</a>
+      {% endif %}
+
+      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+    </nav>
+  </header>
+
+  <!-- CONTEÚDO -->
+  <main class="page">
+
+    <!-- HERO SOBRE: texto + fotos -->
+    <section class="about-hero">
+      <div class="about-text">
+        <span class="tag">Sobre o ShowTime</span>
+        <h1>Uma plataforma feita para aproximar artistas e fãs.</h1>
+        <p>
+          A ShowTime nasceu de um projeto na PUC-RIO, para a disciplina de Projeto Integrado de Software.
+          Nosso objetivo era criar um site que abrangesse Cultura e Arte, e apos semanas de
+          desenvolvimento surgimos com a ShowTime, um portal onde fâs e 
+          da vontade de transformar a experiência de ir a shows
+          em algo mais pessoal, transparente e conectado. Aqui, o fã deixa de ser só
+          mais um ingresso e passa a fazer parte da história do artista.
+        </p>
+        <p>
+          Nosso objetivo é criar uma ponte segura entre quem cria a música e quem vive
+          cada refrão na plateia — com informação em tempo real, comunicação direta e
+          uma curadoria que valoriza tanto grandes nomes quanto a cena independente.
+        </p>
+      </div>
+
+      <div class="about-gallery">
+        <div class="photo big">
+          <img src="{% static 'core/img/showRoxo.png' %}" alt="Banda tocando ao vivo">
+        </div>
+
+    </section>
+
+    <!-- MISSÃO / VISÃO / VALORES -->
+    <section class="section mission">
+      <div class="section-box">
+        <div class="section-title">
+          <h2>Nossos objetivos</h2>
+          <p>Nossos pilares para construir uma comunidade verdadeira entre artistas e fãs.</p>
+        </div>
+
+        <div class="cards-grid">
+          <article class="card">
+            <h3>Conexão de verdade</h3>
+            <p>
+              Aproximar o artista do fã, indo além do like e do stream. Notificações de shows,
+              novidades e lançamentos em um só lugar.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Valorização da cena</h3>
+            <p>
+              Espaço para artistas independentes, novos projetos e turnês menores que muitas vezes
+              não aparecem nas grandes plataformas.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>Experiência segura</h3>
+            <p>
+              Informações organizadas, links oficiais e foco em ingressos confiáveis,
+              para o fã se preocupar só em cantar junto.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO TUDO COMEÇOU (caixa branca) -->
+    <section class="section story">
+      <div class="story-box">
+        <div class="section-title">
+          <h2>Como tudo começou</h2>
+          <p>Um incômodo real virou o ponto de partida da ShowTime.</p>
+        </div>
+
+        <div class="timeline">
+          <div class="step">
+            <span class="dot"></span>
+            <div class="step-content">
+              <h3>Da plateia para o código</h3>
+              <p>
+                A ideia surgiu depois de viver na pele a confusão de datas, links duvidosos
+                e falta de informação sobre shows que realmente importavam.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="dot"></span>
+            <div class="step-content">
+              <h3>Prototipando o sonho</h3>
+              <p>
+                Começamos com uma página simples conectando alguns artistas e fãs,
+                testando como organizar agenda, notícias e interação em um único painel.
+              </p>
+            </div>
+          </div>
+
+          <div class="step">
+            <span class="dot"></span>
+            <div class="step-content">
+              <h3>ShowTime ganha forma</h3>
+              <p>
+                Com o tempo, a plataforma foi ganhando identidade própria: visual pop,
+                foco em experiência e funcionalidades pensadas para quem ama estar no show.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O QUE É A SHOWTIME HOJE -->
+    <section class="section features">
+      <div class="section-box">
+        <div class="section-title">
+          <h2>O que é a ShowTime hoje</h2>
+          <p>Um hub para viver música ao vivo de um jeito mais organizado e afetivo.</p>
+        </div>
+
+        <div class="features-grid">
+          <div class="feature">
+            <h3>Feed de artistas</h3>
+            <p>
+              Cada artista com sua página, biografia, principais músicas, próximos eventos
+              e um botão de “seguir” para você não perder nada.
+            </p>
+          </div>
+
+          <div class="feature">
+            <h3>Agenda de shows</h3>
+            <p>
+              Datas e locais dos eventos reunidos, com foco nos artistas que você acompanha
+              e nos estilos que fazem sentido pra você.
+            </p>
+          </div>
+
+          <div class="feature">
+            <h3>Descoberta de novos nomes</h3>
+            <p>
+              Sugestões baseadas em artistas semelhantes, gêneros e cenas locais,
+              ajudando a fortalecer a música independente.
+            </p>
+          </div>
+
+          <div class="feature">
+            <h3>Experiência visual pop</h3>
+            <p>
+              Interface inspirada em festival: cores vibrantes, cards, fotos de palco
+              e uma navegação leve, com cara de backstage digital.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  {% include 'core/footer.html' %}
 </body>
 </html>
-
-{}
