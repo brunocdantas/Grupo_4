@@ -327,6 +327,7 @@ body {
   font-size: 14px;
 }
 
+
 /* cards de destaques */
 
 .cards-grid {
@@ -481,6 +482,7 @@ body {
 }
 
 .artist img {
+  
   width: 42px;
   height: 42px;
   border-radius: 50%;
@@ -489,11 +491,13 @@ body {
 }
 
 .artist span {
+  text-decoration: none !important;
   font-size: 12px;
   color: #666f80;
 }
 
 .follow {
+  text-decoration: none !important;
   margin-left: auto;
   background: #0f0f1d;
   color: #fff;

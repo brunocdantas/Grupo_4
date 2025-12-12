@@ -43,3 +43,9 @@ def coringa_page(request):
         "artist": artist,
         "top_musics": top_musics_list,
     })
+def artist_detail(request, artist_id):
+    artist = get_object_or_404(Artist, id=artist_id)
+    return render(request, 'core/coringa.html', {'artist': artist})
+
+def sobre(request):
+    return render(request, "core/sobre.html")

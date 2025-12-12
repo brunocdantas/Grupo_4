@@ -4,191 +4,485 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ShowTime — Artistas</title>
-  <link rel="stylesheet" href="{% static 'core/css/artistas.css' %}">
-
+  <title>ShowTime | Shows</title>
+  <link rel="stylesheet" href="/static/core/css/artistas.css?v=999">
 </head>
+
 <body>
-  <!-- fundo -->
+  <!-- Fundo roxo -->
   <div class="page-bg"></div>
 
- <!-- Topbar -->
-  <!-- Topbar -->
+  <!-- Topbar (mesmo padrão) -->
   <header class="topbar">
-  <div class="brand">
-    <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
-    <a href="{% url 'home' %}" class="brand-link">
-      <span class="app-name">ShowTime</span>
-    </a>
-  </div>
+    <div class="brand">
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+        <span class="app-name">ShowTime</span>
+      </a>
+    </div>
 
-  <nav class="nav-links">
-    <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
-    <a href="{% url 'artistas' %}" class="link active">Artistas</a>
+    <nav class="nav-actions">
+      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
 
-    {% if user.is_authenticated %}
-      <span class="user-label">{{ user.username }}!</span>
-      <a href="{% url 'logout' %}" class="link">Logout</a>
-    {% else %}
-      <a href="{% url 'login' %}" class="btn-top">Login</a>
-    {% endif %}
+      {% if user.is_authenticated %}
+        <p>Olá,{{ user.username }}</p>
+        <a href="{% url 'logout' %}" class="link">Logout</a>
+      {% else %}
+        <p></p>
+        <a href="{% url 'login' %}" class="botao">Login</a>
+      {% endif %}
 
-    <a href="{% url 'sobre' %}" class="link">Sobre</a>
-  </nav>
-</header>
+     
+    </nav>
+  </header>
+
   <!-- CONTEÚDO -->
   <main class="page">
-    <!-- barra de busca -->
-    <section class="search-area">
-      <h1>Descubra Artistas</h1>
-      <p>Encontre seus artistas e bandas favoritos e siga para receber novidades. Ou descubra novos cantores que não irão sair da suas playlists</p>
 
-      <div class="search-box">
-        <input type="text" id="searchArtist" placeholder="Buscar artistas, bandas ou eventos...">
-        <span class="icon">🔍</span>
-        <!-- resultados -->
-        <ul id="searchResults" class="results-box"></ul>
+   <!-- HERO DOS SHOWS -->
+<section class="shows-hero">
+  <div class="hero-text">
+    <span class="tag">Eventos</span>
+    <h1>Próximos shows e turnês</h1>
+    <p>
+      Descubra os próximos shows dos seus artistas favoritos, turnês internacionais
+      e festivais que estão passando perto de você.
+    </p>
+  </div>
+
+  <!-- CAIXA DE BUSCA BONITINHA -->
+  <div class="search-box">
+    <form action="{% url 'coringa_page' %}" method="get">
+      <input
+          type="text"
+          name="q"
+          id="searchArtist"
+          placeholder="Buscar artistas, bandas ou eventos..."
+          autocomplete="on"
+      />
+      <button type="submit">Buscar</button>
+    </form>
+
+    <ul id="searchResults" class="search-results"></ul>
+  </div>
+</section>
+
+    <!-- LISTA / GRADE DE SHOWS -->
+    <section class="shows-section">
+      <div class="section-title">
+        <h2>Shows em destaque</h2>
+      </div>
+
+      <div class="shows-grid">
+
+        <!-- CARD 1 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/rosalia.gif' %}" alt="Rosalía ao vivo">
+            <span class="badge-genre">Pop / Flamenco</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2026</span>
+              <span class="month">out</span>
+              <span class="day">10</span>
+            </div>
+
+            <div class="show-main">
+              <h3>ROSALÍA • Rio de Janeiro</h3>
+              <p class="venue">Farmasi Arena • </p>
+              <p class="extra">Os ingressos já estão à venda em www.ticketmaster.com.br.</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/rosalia', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 2 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/djavan_show.gif' %}" alt="Djavan em show">
+            <span class="badge-genre">MPB / Jazz</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2026</span>
+              <span class="month">out</span>
+              <span class="day">1</span>
+            </div>
+
+            <div class="show-main">
+              <h3>DJAVAN • Rio de Janeiro</h3>
+              <p class="venue">Farmasi Arena •</p>
+              <p class="extra">DJAVAN CELEBRA 50 ANOS DE CARREIRA COM TURNÊ NACIONAL.</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/djavan', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 3 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/DojaCat.gif' %}" alt="Doja em apresentação">
+            <span class="badge-genre">Pop / Hip-Hop / R&B</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2026</span>
+              <span class="month">fev</span>
+              <span class="day">5</span>
+            </div>
+
+            <div class="show-main">
+              <h3>DOJA CAT • São Paulo</h3>
+              <p class="venue">Suhai Music Hall • 21h</p>
+              <p class="extra">Doja Cat estreiará sua grandiosa "Tour Ma Vie World Tour".</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/doja-cat', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 4 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/Rufus.gif' %}" alt="Festival Indie Sunset">
+            <span class="badge-genre">Eletrônica / Indie Electronic / House Melódico</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2026</span>
+              <span class="month">fev</span>
+              <span class="day">27</span>
+            </div>
+
+            <div class="show-main">
+              <h3>RÜFÜS DU SOL • São Paulo</h3>
+              <p class="venue">Mercado Livre Arena Pacaembu • 23h</p>
+              <p class="extra">RÜFÜS DU SOL, anuncia sua maior turnê sul-americana até o momento, marcada para o início de 2026.</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/rufus-du-sol', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 5 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/weekendAndAnitta.gif' %}" alt="TheWeeknd e Anitta ao vivo">
+            <span class="badge-genre">R&B / Pop / Alternative R&B</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2026</span>
+              <span class="month">abr</span>
+              <span class="day">30</span>
+            </div>
+
+            <div class="show-main">
+              <h3>THE WEEKND • São Paulo</h3>
+              <p class="venue">Estádio MorumBis • 20h30</p>
+              <p class="extra">THE WEEKND ANUNCIA A EXTENSÃO DA TURNÊ RECORDISTA "AFTER HOURS TIL DAWN" PARA 2026, COM ANITTA SE UNINDO A TODA A AMÉRICA LATINA.</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/the-weeknd', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
+        <!-- CARD 6 -->
+        <article class="show-card">
+          <div class="show-cover">
+            <img src="{% static 'core/img/marotinho.webp' %}" alt="Show de pagode">
+            <span class="badge-genre">Pagode</span>
+          </div>
+
+          <div class="show-info">
+            <div class="show-date-pill">
+              <span class="year">2025</span>
+              <span class="month">dez</span>
+              <span class="day">20</span>
+            </div>
+
+            <div class="show-main">
+              <h3>SORRISO MAROTO • Florianópolis</h3>
+              <p class="venue">Arena Floripa • 15h</p>
+              <p class="extra">A última edição do #SorrisoAsAntigas vai ser em Floripa, para fecharmos esse ciclo com chave de ouro! 
+                O coração já tá apertado… por aí também? 
+
+</p>
+            </div>
+
+            <button class="show-btn"
+              onclick="window.open('https://www.ingresse.com/sorriso-maroto-as-antigasflorianopolis/', '_blank')">
+              Comprar ingresso
+            </button>
+          </div>
+        </article>
+
       </div>
     </section>
 
-    <!-- grade de artistas -->
-    <section class="artists-grid" id="artistsGrid">
-      <!-- cada card -->
-      <article class="artist-card" data-nome="Veigh">
-        <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh">
-        <h3>Veigh</h3>
-        <p>Trap, hip hop</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Drake">
-        <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake">
-        <h3>Drake</h3>
-        <p>Hip hop, R&B</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="LUDMILLA">
-        <img src="{% static 'core/img/lud_capa.webp' %}" alt="LUDMILLA">
-        <h3>LUDMILLA</h3>
-        <p>Funk, pagode</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Anitta">
-        <img src="{% static 'core/img/anitta.webp' %}" alt="Anitta" onerror="this.style.display='none'">
-        <h3>Anitta</h3>
-        <p>Pop, funk</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Coldplay">
-        <img src="{% static 'core/img/coldplay.jpg' %}" alt="Coldplay" onerror="this.style.display='none'">
-        <h3>Coldplay</h3>
-        <p>Rock alternativo</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="The Weeknd">
-        <img src="{% static 'core/img/theweeknd.jpg' %}" alt="The Weeknd" onerror="this.style.display='none'">
-        <h3>The Weeknd</h3>
-        <p>R&B, pop</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Rihanna">
-        <img src="{% static 'core/img/rihanna.jpg' %}" alt="Rihanna" onerror="this.style.display='none'">
-        <h3>Rihanna</h3>
-        <p>Pop, R&B</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Lagum">
-        <img src="{% static 'core/img/lagum.png' %}" alt="Lagum" onerror="this.style.display='none'">
-        <h3>Lagum</h3>
-        <p>Pop rock brasileiro</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="NX Zero">
-        <img src="{% static 'core/img/nxzero.jpg' %}" alt="NX Zero" onerror="this.style.display='none'">
-        <h3>NX Zero</h3>
-        <p>Rock nacional</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-
-      <article class="artist-card" data-nome="Ivete Sangalo">
-        <img src="{% static 'core/img/ivete.jpg' %}" alt="Ivete Sangalo" onerror="this.style.display='none'">
-        <h3>Ivete Sangalo</h3>
-        <p>Axé, pop</p>
-        <button class="btn-follow">Seguir</button>
-      </article>
-    </section>
   </main>
 
-  <!-- SCRIPT DE PESQUISA -->
+  {% include 'core/footer.html' %}
+
   <script>
-    // mesma lista da home + alguns a mais
-    const ARTISTAS = [
-      "Veigh","LUDMILLA","Anitta","Drake","Ferrugem","Gloria Groove","IZA","Lagum","NX Zero",
-      "Ivete Sangalo","Dua Lipa","Billie Eilish","The Weeknd","Rihanna","Beyoncé","Coldplay",
-      "Imagine Dragons","Arctic Monkeys","Foo Fighters","SZA","Kendrick Lamar","Travis Scott",
-      "Matuê","Teto","Wiu","Jão","Ana Castela","Marília Mendonça","Henrique & Juliano",
-      "Gusttavo Lima","Zé Neto & Cristiano","Projota","Emicida","Karol Conká","MC Cabelinho"
-    ];
+  const ARTISTAS = [
+  // 🎤 Brasileiros
+  "Veigh",
+  "LUDMILLA",
+  "Anitta",
+  "Alcione",
+  "Djavan",
+  "Péricles",
+  "Ferrugem",
+  "Liniker",
+  "Gloria Groove",
+  "IZA",
+  "Léo Santana",
+  "Ivete Sangalo",
+  "Claudia Leitte",
+  "Zeca Pagodinho",
+  "Seu Jorge",
+  "Gilberto Gil",
+  "Caetano Veloso",
+  "Maria Bethânia",
+  "Marisa Monte",
+  "Chico Buarque",
+  "Gal Costa",
+  "Milton Nascimento",
+  "Elis Regina",
+  "Zezé Di Camargo & Luciano",
+  "Jorge & Mateus",
+  "Henrique & Juliano",
+  "Maiara & Maraisa",
+  "Zé Neto & Cristiano",
+  "Gusttavo Lima",
+  "Ana Castela",
+  "Luan Santana",
+  "Sandy & Junior",
+  "NX Zero",
+  "Fresno",
+  "Lagum",
+  "Natiruts",
+  "Melim",
+  "Skank",
+  "Jota Quest",
+  "Capital Inicial",
+  "Titãs",
+  "Os Paralamas do Sucesso",
+  "Detonautas",
+  "Mamonas Assassinas",
+  "Racionais MCs",
+  "Emicida",
+  "Projota",
+  "Mano Brown",
+  "Karol Conká",
+  "MC Cabelinho",
+  "MC Hariel",
+  "MC Ryan SP",
+  "MC Kevin o Chris",
+  "Kevin o Chris",
+  "POCAH",
+  "Tz da Coronel",
+  "Kayblack",
+  "Matue",
+  "Teto",
+  "Wiu",
+  "Orochi",
+  "Derek",
+  "Borges",
+  "Cabelinho",
+  "Veigh",
+  "Yunk Vino",
+  "Ryu The Runner",
+  "FBC",
+  "Djonga",
+  "BK’",
+  "Rashid",
+  "Criolo",
+  "Sabotage",
 
-    const input = document.getElementById("searchArtist");
-    const resultsBox = document.getElementById("searchResults");
-    const cards = document.querySelectorAll(".artist-card");
+  // 🌍 Internacionais
+  "Drake",
+  "Dua Lipa",
+  "The Weeknd",
+  "Rihanna",
+  "Beyoncé",
+  "Billie Eilish",
+  "Post Malone",
+  "Travis Scott",
+  "SZA",
+  "Kendrick Lamar",
+  "J. Cole",
+  "Nicki Minaj",
+  "Doja Cat",
+  "Ariana Grande",
+  "Bruno Mars",
+  "Ed Sheeran",
+  "Taylor Swift",
+  "Harry Styles",
+  "Olivia Rodrigo",
+  "Sam Smith",
+  "Lana Del Rey",
+  "Miley Cyrus",
+  "Justin Bieber",
+  "Shawn Mendes",
+  "Selena Gomez",
+  "Camila Cabello",
+  "Bad Bunny",
+  "Rosalía",
+  "Karol G",
+  "Maluma",
+  "J Balvin",
+  "Daddy Yankee",
+  "Ozuna",
+  "Peso Pluma",
+  "Coldplay",
+  "Imagine Dragons",
+  "OneRepublic",
+  "Maroon 5",
+  "Linkin Park",
+  "Arctic Monkeys",
+  "Foo Fighters",
+  "Green Day",
+  "Nirvana",
+  "The Killers",
+  "Paramore",
+  "Fall Out Boy",
+  "Panic! At The Disco",
+  "Muse",
+  "Red Hot Chili Peppers",
+  "Metallica",
+  "Guns N’ Roses",
+  "Queen",
+  "AC/DC",
+  "Pink Floyd",
+  "Led Zeppelin",
+  "U2",
+  "The Rolling Stones",
+  "The Beatles",
+  "ABBA",
+  "Elton John",
+  "Michael Jackson",
+  "Prince",
+  "Whitney Houston",
+  "Celine Dion",
+  "Adele",
+  "Lady Gaga",
+  "Shakira",
+  "Enrique Iglesias",
+  "Justin Timberlake",
+  "Eminem",
+  "50 Cent",
+  "Jay-Z",
+  "Kanye West",
+  "Lil Nas X",
+  "Tyler, The Creator",
+  "Frank Ocean",
+  "The Neighbourhood",
+  "Tame Impala",
+  "Lorde",
+  "The 1975",
+  "Imagine Dragons",
+  "Bastille",
+  "Glass Animals",
+  "The Chainsmokers",
+  "Zedd",
+  "David Guetta",
+  "Calvin Harris",
+  "Avicii",
+  "Swedish House Mafia",
+  "Martin Garrix",
+  "Kygo",
+  "Marshmello",
+  "Skrillex",
+  "Diplo",
+  "Major Lazer",
+  'One direction'
+];
+const input = document.getElementById("searchArtist");
+  const resultsBox = document.getElementById("searchResults");
 
-    // filtra cards na página conforme digita
-    input.addEventListener("input", function () {
-      const termo = this.value.toLowerCase().trim();
+  // mostra sugestões conforme digita
+  input.addEventListener("input", function () {
+    const termo = this.value.toLowerCase().trim();
 
-      // mostra/esconde sugestões
-      if (!termo) {
-        resultsBox.style.display = "none";
-        // volta todos os cards
-        cards.forEach(c => c.style.display = "block");
-        return;
-      }
-
-      // sugestões (max 8)
-      const filtrados = ARTISTAS
-        .filter(nome => nome.toLowerCase().includes(termo))
-        .slice(0, 8);
-
-      resultsBox.innerHTML = filtrados.map(nome => `<li data-valor="${nome}">${nome}</li>`).join("");
-      resultsBox.style.display = "block";
-
-      // filtra cards visíveis
-      cards.forEach(card => {
-        const nomeCard = card.getAttribute("data-nome").toLowerCase();
-        card.style.display = nomeCard.includes(termo) ? "block" : "none";
-      });
-    });
-
-    // clique na sugestão
-    resultsBox.addEventListener("click", function (e) {
-      const li = e.target.closest("li");
-      if (!li) return;
-      const valor = li.getAttribute("data-valor");
-      input.value = valor;
+    if (!termo) {
       resultsBox.style.display = "none";
+      resultsBox.innerHTML = "";
+      return;
+    }
 
-      // mostra só o card desse artista
-      cards.forEach(card => {
-        const nomeCard = card.getAttribute("data-nome");
-        card.style.display = (nomeCard.toLowerCase() === valor.toLowerCase()) ? "block" : "none";
-      });
-    });
+    // filtra
+    const filtrados = ARTISTAS.filter((nome) =>
+      nome.toLowerCase().includes(termo)
+    ).slice(0, 10); // no máx 10
 
-    // fecha a caixinha se clicar fora
-    document.addEventListener("click", function (e) {
-      if (!e.target.closest(".search-box")) {
-        resultsBox.style.display = "none";
-      }
-    });
-  </script>
+    // se não achou nada
+    if (filtrados.length === 0) {
+      resultsBox.innerHTML =
+        '<li><span>Nenhum artista encontrado</span></li>';
+      resultsBox.style.display = "block";
+      return;
+    }
+
+    // monta a lista
+    resultsBox.innerHTML = filtrados
+      .map(
+        (nome) => `
+        <li data-valor="${nome}">
+          <span>${nome}</span>
+          <small>ver perfil</small>
+        </li>
+      `
+      )
+      .join("");
+
+    resultsBox.style.display = "block";
+  });
+
+  // clique na sugestão
+  resultsBox.addEventListener("click", function (e) {
+    const li = e.target.closest("li");
+    if (!li) return;
+    const valor = li.getAttribute("data-valor");
+    input.value = valor;
+    resultsBox.style.display = "none";
+
+    // aqui você pode redirecionar se quiser:
+    // window.location.href = "/artista/" + encodeURIComponent(valor);
+  });
+
+  // fecha se clicar fora
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest(".search-box")) {
+      resultsBox.style.display = "none";
+    }
+  });
+</script>
 </body>
 </html>

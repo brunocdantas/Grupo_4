@@ -22,15 +22,16 @@
     <nav class="nav-actions">
       <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      <a href="{% url 'sobre' %}" class="link">Sobre</a>
       {% if user.is_authenticated %}
-    <p>{{ user.username }}!</p>
+    <p>Olá, {{ user.username }}</p>
     <a href="{% url 'logout' %}">Logout</a>
   {% else %}
     <p></p>
     <a href="{% url 'login' %}" class="botao">Login</a>
   {% endif %}
 
-  <a href="{% url 'sobre' %}" class="botao">Sobre</a>
+
 </nav>
     </nav>
   </header>
@@ -65,36 +66,35 @@
       
       <div class="hero-actions">
         <a href="#" class="btn-primary big">Explorar agora</a>
-        <a href="#" class="ghost">Ver como funciona</a>
+        <a href="#" class="ghost"><a href="{% url 'sobre' %}" class="ghost">Ver como funciona</a></a>
       </div>
       <p class="small-info">+120 artistas independentes já estão no ShowTime.</p>
     </div>
 
     <div class="hero-preview">
       <h2>Atualizações recentes</h2>
-
       <div class="card-mini">
         <div>
-          <strong>Veigh</strong>
-          <p>Novo álbum “Eu Venci o Mundo” — 20h</p>
+           <a onclick="window.open('https://open.spotify.com/intl-pt/album/5ORsvI5ThmZw7PS1NTvZaB', '_blank')"" class="card-link"><strong>XTRANHO</strong></a>
+          <p>Novo álbum de Matuê chama a galera do trap underground! — 10/12</p>
         </div>
-        <span class="badge">hoje</span>
+        <span class="badge">essa semana</span>
       </div>
 
       <div class="card-mini">
         <div>
-          <strong>Emily Jones</strong>
-          <p>Pré-venda da turnê nacional liberada</p>
+          <a onclick="window.open('https://mundodamusicamm.com.br/vevo-clipes-mais-vistos-2025/', '_blank')"" class="card-link"><strong>BRUNO MARS E LADY GAGA</strong></a>
+          <p>Dominam o topo de ranking dos clipes mais vistos de 2025</p>
         </div>
-        <span class="badge purple">novo</span>
+        <span class="badge purple">2025!</span>
       </div>
 
       <div class="card-mini">
         <div>
-          <strong>The Rockers</strong>
-          <p>Show em SP — Allianz Parque</p>
+          <a onclick="window.open('https://f5.folha.uol.com.br/musica/2025/12/premio-multishow-2025-consagra-joao-gomes-e-faz-homenagem-para-gilberto-gil.shtml', '_blank')"" class="card-link"><strong>JOÃO GOMES</strong></a>
+          <p>Prêmio Multishow 2025 consagra João Gomes como principal artista do ano</p>
         </div>
-        <span class="badge gray">10 nov</span>
+        <span class="badge gray">prêmiação</span>
       </div>
     </div>
   </main>
@@ -108,23 +108,24 @@
     <div class="cards-grid">
       <article class="card">
         <img src="{% static 'core/img/veigh_album.jpg' %}" alt="Show" onerror="this.style.display='none'">
-        <h3>Veigh lança novo álbum</h3>
-        <p>Ouça primeiro e receba o aviso do show de divulgação.</p>
-        <a href="#" class="card-link">Ver detalhes →</a>
+        <h3>Veigh quebra recordes com “Eu Venci o Mundo”</h3>
+        <p>Disco "Eu Venci o Mundo", de Veigh, já acumula mais de 30 milhões de streams.</p>
+        <a onclick="window.open('https://mundodamusicamm.com.br/veigh-recordes-spotify/', '_blank')"" class="card-link">Ver detalhes →</a>
       </article>
-
+      
       <article class="card">
-        <img src="{% static 'core/img/iceman.webp'%}" alt="Tour" onerror="this.style.display='none'">
-        <h3>Drake irá lançar novo álbum entitulado "ICEMAN" em 2025, porém sem data prevista.</h3>
-        <p>Artistas que você segue vão passar pelo Brasil.</p>
-        <a href="#" class="card-link">Ver agenda →</a>
+        <img src="{% static 'core/img/rockinrio2.png'%}" alt="Tour" onerror="this.style.display='none'">
+        <h3>Rock in Rio Card esgotou em um hora !</h3>
+        <p>O Rock in Rio Card é o ingresso que te garante 1 (um) dia na Cidade do Rock. Você compra, garante sua presença e decide depois em qual dos dias de festival vai usar!</p>
+         <a onclick="window.open('https://rockinrio.com/rio/pt-br/informacoes/', '_blank')"" class="card-link">Ver detalhes →</a>
+      </article>
       </article>
 
       <article class="card">
         <img src="{% static 'core/img/ticket.jpg' %}" alt="Ingressos" onerror="this.style.display='none'">
-        <h3>Compre ingressos no app</h3>
-        <p>Sem filas, sem burocracia, direto com o artista.</p>
-        <a href="#" class="card-link">Como funciona →</a>
+        <h3>Saiba onde comprar o ingresso dos seus artistas favoritos !</h3>
+        <p>Sem golpes, compre da fonte original.</p>
+        <a href="{% url 'artistas' %}" class="card-link">Me leve até lá! →</a>
       </article>
     </div>
   </section>
@@ -143,57 +144,76 @@
           <span class="month">nov</span>
         </div>
         <div class="show-content">
-          <h3>The Rockers • São Paulo</h3>
-          <p>Allianz Parque • 20h</p>
-          <button class="show-btn">Comprar ingresso</button>
+          <h3>DOJA CAT • São Paulo</h3>
+          <p>Suhai Music Hall • 21h</p>
+          <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/doja-cat', '_blank')">
+              Ver ingresso
+            </button>
         </div>
       </article>
 
-      <article class="show-card">
+     <article class="show-card">
         <div class="show-date purple">
-          <span class="day">12</span>
-          <span class="month">nov</span>
+          <span class="year">2026</span>
+          <span class="month">out</span>
+          <span class="day">10</span>
         </div>
         <div class="show-content">
-          <h3>Emily Jones • Rio</h3>
-          <p>Jeunesse Arena • 21h</p>
-          <button class="show-btn">Ver detalhes</button>
+          <h3>ROSALÍA • Rio</h3>
+          <p>Farmasi Arena • 21h</p>
+          <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/rosalia', '_blank')">
+              Ver ingresso
+            </button>
         </div>
       </article>
 
       <article class="show-card">
         <div class="show-date green">
-          <span class="day">15</span>
-          <span class="month">nov</span>
+          <span class="year">2026</span>
+          <span class="month">out</span>
+          <span class="day">1</span>
         </div>
         <div class="show-content">
-          <h3>Blues Band • BH</h3>
-          <p>Arena MRV • 19h30</p>
-          <button class="show-btn">Comprar</button>
+          <h3>DJAVAN • Rio</h3>
+          <p>Farmasi Arena • Sem horário</p>
+          <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/djavan', '_blank')">
+              Ver ingresso
+            </button>
         </div>
       </article>
 
       <article class="show-card">
         <div class="show-date">
-          <span class="day">22</span>
-          <span class="month">nov</span>
+          <span class="year">2026</span>
+          <span class="month">fev</span>
+          <span class="day">27</span>
         </div>
         <div class="show-content">
-          <h3>Festival Indie Sunset</h3>
-          <p>São Paulo • Memorial</p>
-          <button class="show-btn">Ver ingressos</button>
+          <h3>RÜFÜS DU SOL • São Paulo</h3>
+          <p>Arena Pacaembu • 23h</p>
+          <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/rufus-du-sol', '_blank')">
+              Ver ingresso
+            </button>
         </div>
       </article>
 
       <article class="show-card">
         <div class="show-date purple">
-          <span class="day">03</span>
-          <span class="month">dez</span>
+          <span class="year">2026</span>
+          <span class="month">abr</span>
+          <span class="day">30</span>
         </div>
         <div class="show-content">
-          <h3>Show acústico • Rooftop</h3>
-          <p>Rio de Janeiro • 19h</p>
-          <button class="show-btn">Reservar</button>
+          <h3>The Weekend • Estádio MorumBis</h3>
+          <p>São Paulo • Sem Horário</p>
+          <button class="show-btn"
+              onclick="window.open('https://www.ticketmaster.com.br/event/the-weeknd', '_blank')">
+              Ver ingresso
+            </button>
         </div>
       </article>
     </div>
@@ -208,32 +228,37 @@
 
     <div class="artists-list">
       <div class="artist">
-        <img src="{% static 'core/img/artist_rock.png' %}" alt="The Rockers" onerror="this.style.display='none'">
+        <img src="/media/artists/Becoming-Led-Zeppelin.avif" alt="Led Zeppelin">
         <div>
-          <strong>The Rockers</strong>
-          <span>Rock alternativo</span>
+          <strong>Led Zeppelin</strong>
+          <span>Rock</span>
         </div>
-        <button class="follow">Seguir</button>
+        <a href="{% url 'coringa_page' %}?q=Led Zeppelin" class="show-btn">
+    <h>Ver página</h>
+</a>
       </div>
       <div class="artist">
-        <img src="{% static 'core/img/artist_pop.png' %}" alt="Emily Jones" onerror="this.style.display='none'">
+        <img src="/media/artists/Drake-1-1024x683.jpeg" alt="Drake">
         <div>
-          <strong>Emily Jones</strong>
-          <span>Pop</span>
+          <strong>Drake</strong>
+          <span>Hip-Hop / Rap</span>
         </div>
-        <button class="follow">Seguir</button>
+        <a href="{% url 'coringa_page' %}?q=Drake" class="show-btn">
+    <h>Ver página</h>
+</a>
       </div>
       <div class="artist">
-        <img src="{% static 'core/img/artist_blues.png' %}" alt="Blues Band" onerror="this.style.display='none'">
+        <img src="/media/artists/ferrugem-em-curitiba-scaled-e1718824985333.jpg.webp" alt="Drake">
         <div>
-          <strong>Blues Band</strong>
-          <span>Blues</span>
+          <strong>Ferrugem</strong>
+          <span>Samba / Pagode</span>
         </div>
-        <button class="follow">Seguir</button>
+        <a href="{% url 'coringa_page' %}?q=Ferrugem" class="show-btn">
+    <h>Ver página</h>
+</a>
       </div>
     </div>
   </section>
-
   {% include 'core/footer.html' %}
   <script>
   const ARTISTAS = [
