@@ -2,152 +2,181 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>SHOWtime — Favoritos</title>
-
-  <!-- CSS dessa página -->
-  <link rel="stylesheet" href="{% static 'core/css/favoritos.css' %}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShowTime | Favoritos</title>
+  <link rel="stylesheet" href="{% static 'core/css/favoritos.css' %}?v=1">
 </head>
+
 <body>
-  <!-- fundo roxo -->
+  <!-- Fundo roxo -->
   <div class="page-bg"></div>
 
-  <!-- topo -->
+  <!-- TOPBAR (mesmo padrão das outras páginas) -->
   <header class="topbar">
     <div class="brand">
-      <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="ShowTime" class="logo">
-      <h1 class="app-name">SHOWtime</h1>
+      <a href="{% url 'home' %}" class="brand-link">
+        <img src="{% static 'core/img/Logo_nome_real.png' %}" alt="Logo ShowTime" class="logo">
+        <span class="app-name">ShowTime</span>
+      </a>
     </div>
 
-    <div class="user">
-      <a href="{% url 'home' %}" class="top-link">Início</a>
-      <a href="{% url 'favoritos' %}" class="top-link active">Favoritos</a>
+    <nav class="nav-actions">
+      <a href="{% url 'favoritos' %}" class="link ativo">Favoritos</a>
+      <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      <a href="{% url 'sobre' %}" class="link">Sobre</a>
+
       {% if user.is_authenticated %}
-    <p>{{ user.username }}!</p>
-    <a href="{% url 'logout' %}">Logout</a>
-  {% else %}
-    <p></p>
-    <a href="{% url 'login' %}" class="botao">Login</a>
-  {% endif %}
-    </div>
+        <span class="user-label">Olá, {{ user.username }}</span>
+        <a href="{% url 'logout' %}" class="link">Logout</a>
+      {% else %}
+        <a href="{% url 'login' %}" class="botao">Login</a>
+      {% endif %}
+
+      
+    </nav>
   </header>
 
-  <!-- conteúdo -->
-  <main class="layout">
-    <!-- feed -->
-    <section class="feed" aria-label="Feed de artistas que você segue">
+  <!-- CONTEÚDO -->
+  <main class="page fav-page">
+    <!-- FEED PRINCIPAL -->
+    <section class="feed">
       <!-- Post 1 -->
-      <article class="post">
-        <header class="post-head">
-          <div class="who">
-            <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh" class="mini">
+      <article class="post-card">
+        <header class="post-header">
+          <div class="user-info">
+            <img src="{% static 'core/img/MCR.jpg' %}" alt="Veigh" class="avatar">
             <div>
-              <h3>Veigh</h3>
-              <time datetime="2025-06-26">26/06 • anúncio</time>
+              <h2>My Chemical Romance ✔️</h2>
+              <span class="meta">12/12 • pergunta</span>
             </div>
           </div>
-          <button class="btn-ghost">Seguindo</button>
+          <button class="follow-btn">Seguindo</button>
         </header>
 
         <p class="post-text">
-          Meu novo álbum <strong>“Eu Venci o Mundo”</strong> sai quinta às 20h.
+          We’ve been talking backstage and got curious…
+
+Which one of our albums is your favorite?
+And what does it mean to you?
         </p>
 
-        <img src="{% static 'core/img/capa-album2.webp' %}" alt="Capa do álbum" class="post-media">
+        <div class="post-image">
+          <img src="{% static 'core/img/My_Chemical_Romance_logo.png' %}" alt="MCR album">
+        </div>
 
         <footer class="post-actions">
-          <button class="btn-icon">👍 Curtir</button>
-          <button class="btn-icon">💬 Comentar</button>
-          <button class="btn-icon">↗ Compartilhar</button>
+          <button class="pill-btn">🔥 Curtir</button>
+          <button class="pill-btn">💬 Comentar</button>
+          <button class="pill-btn">✈ Compartilhar</button>
         </footer>
       </article>
 
-      <!-- Post 2 -->
-      <article class="post">
-        <header class="post-head">
-          <div class="who">
-            <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake" class="mini">
+      <!-- Post 2 (exemplo) -->
+      <article class="post-card">
+        <header class="post-header">
+          <div class="user-info">
+            <img src="{% static 'core/img/aleee.jpg' %}" alt="Alee" class="avatar">
             <div>
-              <h3>Drake</h3>
-              <time datetime="2025-10-14">ontem • atualização</time>
+              <h2>Alee ✔️</h2>
+              <span class="meta">ontem • atualização</span>
             </div>
           </div>
-          <button class="btn-ghost">Seguindo</button>
+          <button class="follow-btn light">Seguir</button>
         </header>
+
         <p class="post-text">
-          Philly, you know the vibes 🦉<br>
-          Halloween night. 10PM. NOTO.
+          Obrigado Madureira ❤️❤️ 
         </p>
+
+        <div class="post-image small">
+
+        </div>
+
         <footer class="post-actions">
-          <button class="btn-icon">👍 Curtir</button>
-          <button class="btn-icon">💬 Comentar</button>
-          <button class="btn-icon">↗ Compartilhar</button>
+          <button class="pill-btn">🔥 Curtir</button>
+          <button class="pill-btn">💬 Comentar</button>
+          <button class="pill-btn">✈ Compartilhar</button>
         </footer>
       </article>
     </section>
 
-    <!-- lateral -->
-    <aside class="sidebar" aria-label="Painel do usuário">
-      <section class="card shows">
-        <h2>Seus shows favoritados ❤️</h2>
+    
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <!-- Shows favoritos -->
+      <section class="side-card">
+        <div class="side-title">
+          <h3>Seus shows favoritos <span>💗</span></h3>
+        </div>
 
-        <a class="show-item" href="#">
-          <div class="icon">📅</div>
+        <div class="show-mini">
+          <div class="icon">
+            <span class="calendar">📅</span>
+          </div>
           <div class="info">
             <strong>Ferrugem • Rio de Janeiro, RJ</strong>
-            <span>11 de jan — Riocentro</span>
-            <span class="link">Comprar ingressos</span>
+            <p>11 de jan — Riocentro</p>
+            <a href="#" class="mini-link">Comprar ingressos</a>
           </div>
-        </a>
+        </div>
 
-        <a class="show-item" href="#">
-          <div class="icon">📅</div>
+        <div class="show-mini">
+          <div class="icon">
+            <span class="calendar">📅</span>
+          </div>
           <div class="info">
             <strong>Dua Lipa • Rio de Janeiro, RJ</strong>
-            <span>22 de nov — Engenhão</span>
-            <span class="link">Comprar ingressos</span>
+            <p>22 de nov — Engenhão</p>
+            <a href="#" class="mini-link">Comprar ingressos</a>
           </div>
-        </a>
+        </div>
 
-        <a class="show-item" href="#">
-          <div class="icon">📅</div>
+        <div class="show-mini">
+          <div class="icon">
+            <span class="calendar">📅</span>
+          </div>
           <div class="info">
             <strong>Alcione • Rio de Janeiro, RJ</strong>
-            <span>6 de dez — Via Parque</span>
-            <span class="link">Mais detalhes</span>
+            <p>6 de dez — Via Parque</p>
+            <a href="#" class="mini-link">Mais detalhes</a>
           </div>
-        </a>
+        </div>
       </section>
 
-      <section class="card favorites">
-        <h2>Artistas favoritados ❤️</h2>
+      <!-- Artistas favoritos -->
+      <section class="side-card">
+        <div class="side-title">
+          <h3>Artistas favoritos <span>💗</span></h3>
+        </div>
 
-        <a class="artist" href="#">
-          <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh" class="thumb">
-          <div>
-            <strong>Veigh</strong>
-            <span>trap, funk</span>
-          </div>
-        </a>
-
-        <a class="artist" href="#">
-          <img src="{% static 'core/img/drake_capa.webp' %}" alt="Drake" class="thumb">
-          <div>
-            <strong>Drake</strong>
-            <span>hip hop, rap</span>
-          </div>
-        </a>
-
-        <a class="artist" href="#">
-          <img src="{% static 'core/img/lud_capa.webp' %}" alt="Ludmilla" class="thumb">
-          <div>
-            <strong>Ludmilla</strong>
-            <span>pagode, funk</span>
-          </div>
-        </a>
+        <ul class="artist-mini-list">
+          <li>
+            <img src="{% static 'core/img/veigh_capa.jpg' %}" alt="Veigh">
+            <div>
+              <strong>Veigh</strong>
+              <span>trap, funk</span>
+            </div>
+          </li>
+          <li>
+            <img src="{% static 'core/img/aleee.jpg' %}" alt="Drake">
+            <div>
+              <strong>Alee</strong>
+              <span>trap, rap</span>
+            </div>
+          </li>
+          <li>
+            <img src="{% static 'core/img/lud_capa.webp' %}" alt="Ludmilla">
+            <div>
+              <strong>Ludmilla</strong>
+              <span>pagode, funk</span>
+            </div>
+          </li>
+        </ul>
       </section>
     </aside>
   </main>
+
+  {% include 'core/footer.html' %}
 </body>
 </html>

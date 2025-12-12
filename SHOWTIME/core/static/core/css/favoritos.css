@@ -1,257 +1,340 @@
+/* ===== RESET BÁSICO ===== */
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color: #0f1222;
-  min-height: 100vh;
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #0f172a;
+  line-height: 1.6;
 }
 
-/* fundo roxo */
+/* ===== FUNDO ROXO ===== */
 .page-bg {
   position: fixed;
   inset: 0;
-  background: url("/static/core/img/fundo_roxo_deitado.png") center/cover no-repeat fixed;
-  filter: saturate(105%) contrast(105%);
-  z-index: -2;
+  z-index: -1;
+  background-image: url('../img/fundo_roxo_deitado.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-/* top bar */
+/* ===== TOPBAR (igual outras páginas) ===== */
 .topbar {
-  height: 64px;
+  background: #fff;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 24px;
-  background: #ffffff;
-  border-bottom: 1px solid #e4e4e4;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 0 36px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.04);
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 20;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 6px;
+}
+
+.brand-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-link:visited {
+  color: inherit;
 }
 
 .logo {
-  width: 80px;
+  width: 58px;
   height: auto;
-  display: block;
 }
 
 .app-name {
   font-weight: 700;
-  letter-spacing: .2px;
+  font-size: 32px;
 }
 
-.user {
+.nav-actions {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 16px;
+  font-size: 14px;
 }
 
-.top-link {
+.nav-actions .link {
   text-decoration: none;
-  color: #242838;
+  color: #303441;
   font-weight: 500;
 }
 
-.top-link.active {
-  color: #0f0f1d;
-  background: rgba(15,15,29,.05);
-  padding: 4px 10px;
+.nav-actions .link.ativo {
+  color: #111827;
+  font-weight: 600;
+}
+
+.botao {
+  background: #0f0f1d;
+  color: #fff;
+  padding: 7px 16px;
   border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 13px;
 }
 
-.avatar {
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  object-fit: cover;
+.botao:hover {
+  filter: brightness(1.05);
 }
 
-/* layout principal */
-.layout {
-  max-width: 1100px;
-  margin: 16px auto 48px auto;
+.user-label {
+  font-size: 13px;
+  color: #4b5563;
+}
+
+/* ===== LAYOUT GERAL DA PÁGINA ===== */
+.page.fav-page {
+  max-width: 1120px;
+  margin: 32px auto 40px;
+  padding: 0 18px;
   display: grid;
-  grid-template-columns: 1fr 320px;
-  gap: 24px;
-  padding: 0 16px;
+  grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.1fr);
+  gap: 26px;
 }
 
+/* ===== FEED ===== */
 .feed {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
-/* posts */
-.post {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 8px 28px rgba(15,18,34,.06);
-  padding: 16px;
+.post-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 18px;
+  box-shadow: 0 22px 40px rgba(0,0,0,0.06);
+  padding: 18px 20px 16px;
 }
 
-.post-head {
+/* Cabeçalho do post */
+.post-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
-.who {
+.user-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
-.mini {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
   object-fit: cover;
-  background: #eee;
 }
 
-.post-head h3 {
-  margin: 0;
+.post-header h2 {
   font-size: 16px;
+  font-weight: 700;
 }
 
-.post-head time {
-  display: block;
+.meta {
   font-size: 12px;
-  color: #667085;
+  color: #6b7280;
 }
 
-.btn-ghost {
-  border: 1px solid #e7e7ef;
-  background: #fff;
-  padding: 8px 12px;
-  border-radius: 10px;
+/* Botão seguir */
+.follow-btn {
+  border-radius: 999px;
+  border: none;
+  padding: 6px 14px;
+  font-size: 13px;
+  background: #0f0f1d;
+  color: #fff;
   cursor: pointer;
 }
 
+.follow-btn.light {
+  background: #e5e7eb;
+  color: #111827;
+}
+
+/* Texto do post */
 .post-text {
-  margin: 8px 0 12px 0;
-  line-height: 1.5;
+  font-size: 14px;
+  margin: 6px 0 10px;
 }
 
-.post-media {
+/* Imagem do post */
+.post-image {
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.post-image img {
   width: 100%;
-  height: 260px;
-  object-fit: cover;
-  border-radius: 12px;
-  background: #f3f3f7;
+  display: block;
 }
 
+.post-image.small img {
+  max-height: 260px;
+  object-fit: cover;
+}
+
+/* Ações */
 .post-actions {
   display: flex;
-  gap: 12px;
-  padding-top: 10px;
-  border-top: 1px solid #f0f0f5;
+  gap: 10px;
+  margin-top: 4px;
 }
 
-.btn-icon {
-  background: #f6f6fb;
-  border: 1px solid #eee;
-  border-radius: 10px;
-  padding: 8px 10px;
+.pill-btn {
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,.4);
+  background: #f9fafb;
+  padding: 6px 14px;
+  font-size: 13px;
   cursor: pointer;
 }
 
-/* lateral */
+/* ===== SIDEBAR ===== */
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 18px;
 }
 
-.card {
-  background: #fff;
-  border-radius: 14px;
-  padding: 14px;
-  box-shadow: 0 8px 28px rgba(15,18,34,.06);
+.side-card {
+  background: rgba(255,255,255,0.96);
+  border-radius: 18px;
+  box-shadow: 0 18px 32px rgba(0,0,0,0.05);
+  padding: 16px 18px;
 }
 
-.card h2 {
-  font-size: 16px;
-  margin: 4px 0 10px 0;
-}
-
-/* itens de show */
-.show-item {
-  display: flex;
-  gap: 12px;
-  padding: 10px;
-  border-radius: 10px;
-  text-decoration: none;
-  color: inherit;
-}
-
-.show-item:hover {
-  background: #f8f8fc;
-}
-
-.icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 9px;
-  background: #f0f0f8;
-  display: grid;
-  place-items: center;
-}
-
-.info {
-  display: flex;
-  flex-direction: column;
-}
-
-.info .link {
-  color: #5b5bd6;
-  font-size: 13px;
-}
-
-/* artistas favoritos */
-.artist {
+.side-title h3 {
+  font-size: 15px;
+  font-weight: 700;
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px;
-  border-radius: 10px;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+/* Mini cards de show */
+.show-mini {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 10px;
+  padding: 10px 0;
+  border-bottom: 1px solid rgba(148,163,184,0.35);
+}
+
+.show-mini:last-child {
+  border-bottom: none;
+}
+
+.show-mini .icon {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.calendar {
+  font-size: 22px;
+}
+
+.show-mini .info strong {
+  display: block;
+  font-size: 14px;
+}
+
+.show-mini .info p {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.mini-link {
+  font-size: 13px;
+  color: #0f172a;
   text-decoration: none;
-  color: inherit;
+  font-weight: 500;
 }
 
-.artist:hover {
-  background: #f8f8fc;
+.mini-link:hover {
+  text-decoration: underline;
 }
 
-.thumb {
+/* Lista de artistas favoritos */
+.artist-mini-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.artist-mini-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.artist-mini-list img {
   width: 36px;
   height: 36px;
-  border-radius: 50%;
+  border-radius: 999px;
   object-fit: cover;
-  background: #eee;
 }
 
-.artist span {
-  font-size: 13px;
-  color: #6b6f80;
+.artist-mini-list strong {
+  font-size: 14px;
 }
 
-/* responsivo */
-@media (max-width: 980px) {
-  .layout { grid-template-columns: 1fr; }
-  .sidebar { order: 2; }
+.artist-mini-list span {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  background: #ffffff;
+  border-top: 1px solid rgba(0,0,0,0.05);
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.04);
+  padding: 18px 0;
+  width: 100%;
+  margin-top: 40px;
+}
+
+.footer p {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 0 16px;
+  color: #303441;
+  font-size: 14px;
+}
+
+/* ===== RESPONSIVO BÁSICO ===== */
+@media (max-width: 900px) {
+  .page.fav-page {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    order: -1;
+  }
 }

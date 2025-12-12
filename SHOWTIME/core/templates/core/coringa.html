@@ -19,8 +19,8 @@
 </a>
     </div>
     <nav class="nav-actions">
-      <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
-      <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      <a href="{% url 'favoritos' %}" class="link">Feed Social</a>
+      <a href="{% url 'artistas' %}" class="link">Eventos</a>
       <a href="{% url 'sobre' %}" class="link">Sobre</a>
       {% if user.is_authenticated %}
     <p>{{ user.username }}!</p>

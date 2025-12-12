@@ -24,6 +24,7 @@
     <nav class="nav-actions">
       <a href="{% url 'favoritos' %}" class="link">Favoritos</a>
       <a href="{% url 'artistas' %}" class="link">Artistas</a>
+      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
 
       {% if user.is_authenticated %}
         <p>{{ user.username }}.</p>
@@ -33,7 +34,6 @@
         <a href="{% url 'login' %}" class="botao">Login</a>
       {% endif %}
 
-      <a href="{% url 'sobre' %}" class="botao">Sobre</a>
     </nav>
   </header>
 
@@ -45,18 +45,10 @@
       <div class="about-text">
         <span class="tag">Sobre o ShowTime</span>
         <h1>Uma plataforma feita para aproximar artistas e fãs.</h1>
-        <p>
-          A ShowTime nasceu de um projeto na PUC-RIO, para a disciplina de Projeto Integrado de Software.
-          Nosso objetivo era criar um site que abrangesse Cultura e Arte, e apos semanas de
-          desenvolvimento surgimos com a ShowTime, um portal onde fâs e 
-          da vontade de transformar a experiência de ir a shows
-          em algo mais pessoal, transparente e conectado. Aqui, o fã deixa de ser só
-          mais um ingresso e passa a fazer parte da história do artista.
-        </p>
-        <p>
-          Nosso objetivo é criar uma ponte segura entre quem cria a música e quem vive
-          cada refrão na plateia — com informação em tempo real, comunicação direta e
-          uma curadoria que valoriza tanto grandes nomes quanto a cena independente.
+        <p>A ShowTime nasceu como um projeto da PUC-Rio com a missão de transformar a forma como vivemos música. Percebemos que, apesar de existirem plataformas de streaming, ainda faltava um lugar onde fãs encontrassem informação confiável, organizada e direta sobre seus artistas, e onde pudessem sentir que fazem parte da história deles.
+
+
+          Com isso surgimos: um portal que conecta pessoas à música de um jeito emocional e tecnológico, reunindo em um só espaço páginas completas de artistas, suas músicas mais tocadas, próximos shows, links oficiais de venda, e agora, em desenvolvimento, uma rede social musical, onde cada artista poderá enviar lembretes, anúncios e mensagens exclusivas diretamente para sua base de fãs.
         </p>
       </div>
 
@@ -79,24 +71,24 @@
           <article class="card">
             <h3>Conexão de verdade</h3>
             <p>
-              Aproximar o artista do fã, indo além do like e do stream. Notificações de shows,
-              novidades e lançamentos em um só lugar.
+              Ir além do "curtir". Queremos que fã e artista conversem de fato, com lembretes de turnê, novidades, bastidores e avisos enviados diretamente aos seguidores, 
+              tudo reunido em um único feed personalizado.
             </p>
           </article>
 
           <article class="card">
             <h3>Valorização da cena</h3>
             <p>
-              Espaço para artistas independentes, novos projetos e turnês menores que muitas vezes
-              não aparecem nas grandes plataformas.
+              Apoiar tanto grandes nomes quanto artistas independentes, dando visibilidade a novos projetos,
+               turnês menores e cenas locais que muitas vezes passam despercebidas nas grandes plataformas.
             </p>
           </article>
 
           <article class="card">
             <h3>Experiência segura</h3>
             <p>
-              Informações organizadas, links oficiais e foco em ingressos confiáveis,
-              para o fã se preocupar só em cantar junto.
+              Nada de links duvidosos ou informações desencontradas. No ShowTime, o fã só encontra fontes oficiais de venda,
+               datas verificadas e notícias confiáveis, para focar apenas em viver a música.
             </p>
           </article>
         </div>
@@ -141,6 +133,7 @@
               <p>
                 Com o tempo, a plataforma foi ganhando identidade própria: visual pop,
                 foco em experiência e funcionalidades pensadas para quem ama estar no show.
+                E no futuro esperamos adicionar novas funções
               </p>
             </div>
           </div>
@@ -152,7 +145,7 @@
     <section class="section features">
       <div class="section-box">
         <div class="section-title">
-          <h2>O que é a ShowTime hoje</h2>
+          <h2>O que é a ShowTime hoje, e no futuro...</h2>
           <p>Um hub para viver música ao vivo de um jeito mais organizado e afetivo.</p>
         </div>
 
@@ -160,32 +153,29 @@
           <div class="feature">
             <h3>Feed de artistas</h3>
             <p>
-              Cada artista com sua página, biografia, principais músicas, próximos eventos
-              e um botão de “seguir” para você não perder nada.
+              Uma seleção de artista com página própria, biografia, principais músicas, próximos eventos.
             </p>
           </div>
 
           <div class="feature">
-            <h3>Agenda de shows</h3>
+            <h3>Informações sobre o mundo da música</h3>
             <p>
-              Datas e locais dos eventos reunidos, com foco nos artistas que você acompanha
-              e nos estilos que fazem sentido pra você.
+              Compartilhamos reportagens, blogs e muito mais sobre lançamentos, turnês, bastidores e premiações.
             </p>
           </div>
 
           <div class="feature">
-            <h3>Descoberta de novos nomes</h3>
+            <h3>Direcionamento para compra de ingressos</h3>
             <p>
-              Sugestões baseadas em artistas semelhantes, gêneros e cenas locais,
-              ajudando a fortalecer a música independente.
+              Informamos e guiamos os fãs para os canais oficiais de venda de ingressos de shoes e festivais.
             </p>
           </div>
 
           <div class="feature">
-            <h3>Experiência visual pop</h3>
+            <h3>Experiência de comunidade integrada</h3>
             <p>
-              Interface inspirada em festival: cores vibrantes, cards, fotos de palco
-              e uma navegação leve, com cara de backstage digital.
+              Como prinpical objetivo no futuro próximo, queremos criar um espaço onde artistas e fãs possam interagir diretamente,
+               com anúncios, lembretes, enquetes e mensagens exclusivas.
             </p>
           </div>
         </div>
